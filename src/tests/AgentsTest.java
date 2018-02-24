@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import code.Board;
+
 public class AgentsTest {
 	
 	//First, if person has int value from 0-3 and has string value
@@ -24,16 +26,16 @@ public class AgentsTest {
 		
 		for (int i = 0; i < b.locations.length; i++) {
 			for (int j = 0; j < b.locations[0].length; j++) {
-				if(b.locations[i][j].getAgentName() == "Blue") {
+				if(b.locations[i][j].getPerson().getAgentType() == 0) {
 					bCount += 1;
 				}
-				if(b.locations[i][j].getAgentName() == "Red") {
+				if(b.locations[i][j].getPerson().getAgentType() == 1) {
 					rCount += 1;
 				}
-				if(b.locations[i][j].getAgentName() == "Assassin") {
+				if(b.locations[i][j].getPerson().getAgentType() == 2) {
 					aCount += 1;
 				}
-				if(b.locations[i][j].getAgentName() == "Bystander") {
+				if(b.locations[i][j].getPerson().getAgentType() == 3) {
 					byCount += 1;
 				}
 				assertTrue(b.locations[i][j] != null);
