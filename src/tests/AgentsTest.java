@@ -21,18 +21,19 @@ public class AgentsTest {
 		int aCount = 0;
 		int byCount = 0;
 		Board b = new Board();
+		
 		for (int i = 0; i < b.locations.length; i++) {
 			for (int j = 0; j < b.locations[0].length; j++) {
-				if(b.locations[i][j].getName() == "Blue") {
+				if(b.locations[i][j].getAgentName() == "Blue") {
 					bCount += 1;
 				}
-				if(b.locations[i][j].getName() == "Red") {
+				if(b.locations[i][j].getAgentName() == "Red") {
 					rCount += 1;
 				}
-				if(b.locations[i][j].getName() == "Assassin") {
+				if(b.locations[i][j].getAgentName() == "Assassin") {
 					aCount += 1;
 				}
-				if(b.locations[i][j].getName() == "Bystander") {
+				if(b.locations[i][j].getAgentName() == "Bystander") {
 					byCount += 1;
 				}
 				assertTrue(b.locations[i][j] != null);
