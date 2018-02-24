@@ -14,10 +14,8 @@ public class ClueLegalityTest {
 		b.add("wood");
 		
 	
-	assertEquals("Your turn is forfeited!",a.equals(board),board);
-	assertEquals("You can let your field operatives pick a codename.",board);
-	
-		
+		assertEquals("Your turn is forfeited!",a.equals(board),board);
+		assertEquals("You can let your field operatives pick a codename.",board);
 
 }
 }
