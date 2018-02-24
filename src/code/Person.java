@@ -2,6 +2,7 @@ package code;
 
 public class Person {
 	
+	//@author Hollis Pauquette
 	private String agentName;
 	private int agentType;
 
