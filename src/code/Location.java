@@ -12,4 +12,24 @@ public class Location {
 		this.agentType = agentType;
 		visible = false;
 	}
+
+	public String getAgentName() {
+		return agentName;
+	}
+
+	public int getAgentType() {
+		return agentType;
+	}
+
+
+
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+	
+	
 }
