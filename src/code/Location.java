@@ -3,29 +3,17 @@ package code;
 public class Location {
 
 	// @author  Kateryna Semenova
-	private String agentName;
-	private int agentType; //0 Blue, 1 Red, 2 Assasin, 4 Bystander
+	private Person person;
 	private int xCoord;
 	private int yCoord;
 	private boolean visible;
 	
-	public Location(int x, int y, String codename, int agentType){
+	public Location(int x, int y, Person person){
+		this.person = person;
 		setxCoord(x);
 		setyCoord(y);
-		agentName = codename;
-		this.agentType = agentType;
 		visible = false;
 	}
-
-	public String getAgentName() {
-		return agentName;
-	}
-
-	public int getAgentType() {
-		return agentType;
-	}
-
-
 
 	public boolean isVisible() {
 		return visible;
@@ -51,5 +39,8 @@ public class Location {
 		this.yCoord = yCoord;
 	}
 	
+	public Person getPerson() {
+		return this.person;
+	}
 	
 }
