@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Board {
@@ -38,9 +39,25 @@ public class Board {
 	}
 	
 	public List<String> selectRandomCodeNames() {
-		shuffle(readCodeNamesFromFile());
-		return codenames;
+		List<String> newCodenames = new ArrayList<String>();
+		List<String> codenames = readCodeNamesFromFile();
+		Collections.shuffle(codenames);
+		for (int i = 0; i < 25; i++) {
+			newCodenames.add(codenames.get(i));
+		}
+		return newCodenames;	
+	}
+	
+	public List<Integer> createAgentTypeList() {
 		
+	}
+	
+	public List<Person> assignPerson() {
+		List<String> codenames = selectRandomCodeNames();
+		List<Person> assignments = new ArrayList<Person>();
+		for (String name : codenames) {
+			assignments.add(new Person(name, ));
+		}
 	}
 
 }

@@ -7,7 +7,7 @@ public class Person {
 
 	public Person(String codename, int agentType) {
 		setAgentName(codename);
-		setAgentType(agentType);
+		setAgentType(agentType); // 0 - Blue, 1 - Red, 2 - Assassin, 3 - Bystander
 	}
 
 	public String getAgentName() {
