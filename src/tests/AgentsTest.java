@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import code.Board;
+import code.Location;
 
 public class AgentsTest {
 	
@@ -22,23 +23,24 @@ public class AgentsTest {
 		int rCount = 0;
 		int aCount = 0;
 		int byCount = 0;
+		Location[][] theLocations;
 		Board b = new Board();
-		
-		for (int i = 0; i < b.locations.length; i++) {
-			for (int j = 0; j < b.locations[0].length; j++) {
-				if(b.locations[i][j].getPerson().getAgentType() == 0) {
+		theLocations = b.getLocations();
+		for (int i = 0; i < theLocations.length; i++) {
+			for (int j = 0; j < theLocations[0].length; j++) {
+				if(theLocations[i][j].getPerson().getAgentType() == 0) {
 					bCount += 1;
 				}
-				if(b.locations[i][j].getPerson().getAgentType() == 1) {
+				if(theLocations[i][j].getPerson().getAgentType() == 1) {
 					rCount += 1;
 				}
-				if(b.locations[i][j].getPerson().getAgentType() == 2) {
+				if(theLocations[i][j].getPerson().getAgentType() == 2) {
 					aCount += 1;
 				}
-				if(b.locations[i][j].getPerson().getAgentType() == 3) {
+				if(theLocations[i][j].getPerson().getAgentType() == 3) {
 					byCount += 1;
 				}
-				assertTrue(b.locations[i][j] != null);
+				assertTrue(theLocations[i][j] != null);
 				assertEquals(8, bCount);
 				assertEquals(9, rCount);
 				assertEquals(1, aCount);
