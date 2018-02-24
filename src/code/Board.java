@@ -54,7 +54,32 @@ public class Board {
 	}
 	
 	public List<Integer> createAgentTypeList() {
-		
+		List<Integer> agentTypes = new ArrayList<Integer>();
+		agentTypes.add(0);
+		agentTypes.add(0);
+		agentTypes.add(0);
+		agentTypes.add(0);
+		agentTypes.add(0);
+		agentTypes.add(0);
+		agentTypes.add(0);
+		agentTypes.add(0);
+		agentTypes.add(1);
+		agentTypes.add(1);
+		agentTypes.add(1);
+		agentTypes.add(1);
+		agentTypes.add(1);
+		agentTypes.add(1);
+		agentTypes.add(1);
+		agentTypes.add(1);
+		agentTypes.add(1);
+		agentTypes.add(2);
+		agentTypes.add(3);
+		agentTypes.add(3);
+		agentTypes.add(3);
+		agentTypes.add(3);
+		agentTypes.add(3);
+		agentTypes.add(3);
+		agentTypes.add(3);
 	}
 	
 	public List<Person> assignPerson() {
