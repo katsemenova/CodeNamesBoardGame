@@ -5,7 +5,7 @@ public class Game {
 	private static Board board;
 	private static int turn;
 	private static String winner; 
-	static int RED = 0; static int BLUE = 1;
+	static int RED = 1; static int BLUE = 0;
 	
 	public static void main(String[] args){
 		board = new Board();
@@ -18,11 +18,11 @@ public class Game {
 			this.turn = turn;
 	}
 	
-	public void setWinner(String winner){
-		this.winner = winner;
+	public static void setWinner(String win){
+		winner = win;
 	}
 	
-	public int getTurn(){
+	public static int getTurn(){
 		return turn;
 	}
 	
