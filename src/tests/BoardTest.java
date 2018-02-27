@@ -21,8 +21,17 @@ public class BoardTest {
 	@Test
 	public void createBoardTest(){
 		Location[][] arr = b.getLocations();
-//		assertNotNull(true, arr[1][1]);
-		assertEquals(25, arr.length*arr[0].length);
+		assertEquals("The board is not 25 locations",25, arr.length*arr[0].length);
+		
+		for(int i = 0; i < arr.length;i++){
+			for(int j = 0; j < arr[i].length;j++){
+				Object loc = arr[i][j];
+				boolean value = (loc instanceof Location);
+				assertEquals("The location is undefined", true, value);
+				assertEquals("The location is undefined", true, loc != null);
+			}
+		}
+		
 	}
 	
 	@Test
