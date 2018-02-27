@@ -97,6 +97,17 @@ public class Board {
 		}
 		return assignments;
 	}
+	
+	public void assignLocations() {
+		locations = new Location[5][5];
+		for (int i = 0; i < locations.length; i++) {
+			for (int j = 0; j < locations[0].length; j++) {
+				for (Person p : assignPerson()) {
+					locations[i][j] = new Location(i, j, p);
+				}
+			}
+		}
+	}
 
 	// game rule
 	public boolean legalClue(String clue) {
