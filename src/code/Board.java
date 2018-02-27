@@ -7,9 +7,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/*
+ * Instances of this class represent the game board in it's current state
+ * 
+ * @author Hollis Pauquette
+ * @author Kateryna Semenova
+ */
+
 public class Board {
-	
-	//@author Hollis Pauquette, Kateryna Semenova
 
 	private Location[][] locations;
 	private String file;

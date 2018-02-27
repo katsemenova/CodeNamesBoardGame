@@ -25,6 +25,8 @@ public class AgentsTest {
 		int byCount = 0;
 		Location[][] theLocations;
 		Board b = new Board();
+		b.setFile("codenames.txt");
+		b.assignLocations();
 		theLocations = b.getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
