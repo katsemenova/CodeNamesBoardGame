@@ -1,8 +1,6 @@
 package tests;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-
 import org.junit.Test;
 //@author Xiyin Liang, Kateryna Semenova
 
@@ -43,20 +41,17 @@ public class WinningStateTest {
 				if(loc.getPerson().getAgentType()==2) {//if location is visible and it's an assassin.
 					loc.setVisible(true);
 					assassinExists = true;	
-			}
+				}
 			}
 		}
 		
-		assertEquals("checkForAssassin should return false as no assassin exists", assassinExists, board.checkForAssassin());
+		assertEquals("checkForAssassin should return false as no assassin exists", true, board.checkForAssassin());
 	}
 	@Test
 	public void allAgentsRevealedTestNoWinner(){
 		Game game = new Game();
-		System.out.println(game.getBoard() == null);
 		Board board = game.getBoard();
 		
-		//Location[][] arr=board.getLocations();
-
 		assertEquals("There should be no winner since no agents are revealed",false, board.allAgentsRevealed());
 		assertEquals("There should be no winner declared","",game.getWinner()); //noWinner
 		

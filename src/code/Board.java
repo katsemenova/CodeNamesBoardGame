@@ -18,12 +18,11 @@ public class Board {
 
 	private Location[][] locations;
 	private String file;
-	private boolean assassinRevealed;
+	List<String> codenames;
 	private int cardCount;
 
 	public Board() {
 		locations = new Location[5][5];
-		assassinRevealed = false;
 		cardCount = 25;
 		setFile("testfiles/codenames.txt");
 		assignLocations();
@@ -95,7 +94,7 @@ public class Board {
 
 	public List<Person> assignPerson() {
 		List<Integer> agentTypes = createAgentTypeList();
-		List<String> codenames = selectRandomCodeNames();
+		codenames = selectRandomCodeNames();
 		List<Person> assignments = new ArrayList<Person>();
 		for (int i = 0; i < 25; i++) {	
 			assignments.add(new Person(codenames.get(i), agentTypes.get(i)));
@@ -117,6 +116,10 @@ public class Board {
 
 	// game rule
 	public boolean legalClue(String clue) {
+		if(clue == null)
+			throw new NullPointerException();
+		if(clue == "")
+			return false;
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
 				Location loc = locations[i][j];
@@ -132,6 +135,14 @@ public class Board {
 	}
 	public boolean checkForAssassin() {
 				// checks for assassin
+		boolean assassinRevealed = false;
+		for(int i = 0;i<locations.length;i++){
+			for(int j = 0; j <locations[0].length;j++){
+				Location loc = locations[i][j];
+				if(loc.getPerson().getAgentType() == 2 && loc.isVisible())
+					assassinRevealed = true;
+			}
+		}
 						if (assassinRevealed) {
 						if (Game.getTurn() == 1) {
 								Game.setWinner("Blue");
@@ -189,5 +200,10 @@ public class Board {
 			return true;
 		return false;
 
+	}
+
+	public List<String> getCodenamesUsed() {
+		// TODO Auto-generated method stub
+		return codenames;
 	}
 }
