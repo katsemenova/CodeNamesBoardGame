@@ -25,6 +25,8 @@ public class Board {
 		locations = new Location[5][5];
 		assassinRevealed = false;
 		cardCount = 25;
+		setFile("testfiles/codenames.txt");
+		assignLocations();
 	}
 
 	public String getFile() {
