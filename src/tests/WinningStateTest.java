@@ -16,6 +16,7 @@ public class WinningStateTest {
 		Game game = new Game();
 		Board board = game.getBoard();
 		Location[][] arr= board.getLocations();
+		
 		boolean assassinExists = false;
 		for(int i=0;i<5;i++){
 			for(int n=0;n<5;n++){
@@ -51,8 +52,10 @@ public class WinningStateTest {
 	@Test
 	public void allAgentsRevealedTestNoWinner(){
 		Game game = new Game();
+		System.out.println(game.getBoard() == null);
 		Board board = game.getBoard();
-		Location[][] arr=board.getLocations();
+		
+		//Location[][] arr=board.getLocations();
 
 		assertEquals("There should be no winner since no agents are revealed",false, board.allAgentsRevealed());
 		assertEquals("There should be no winner declared","",game.getWinner()); //noWinner

@@ -7,11 +7,16 @@ public class Game {
 	private static String winner; 
 	static int RED = 1; static int BLUE = 0;
 	
+	public Game(){
+		main(null);
+	}
 	public static void main(String[] args){
 		setBoard(new Board());
 		turn = RED;
 		winner = "";
+		
 	}
+	
 	
 	public void setTurn(int turn){
 		if(turn == 0 || turn ==1)
