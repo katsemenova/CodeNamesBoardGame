@@ -4,11 +4,11 @@ public class Person {
 	
 	//@author Hollis Pauquette
 	private String agentName;
-	private int agentType;
+	private Integer agentType;
 
-	public Person(String codename, int agentType) {
+	public Person(String codename, Integer agentType) {
 		setAgentName(codename);
-		setAgentType(agentType); // 0 - Blue, 1 - Red, 2 - Assassin, 3 - Bystander
+		setAgentType(agentType); // "Red", "Blue", "Bystander", "Assassin"
 	}
 
 	public String getAgentName() {
@@ -19,11 +19,11 @@ public class Person {
 		this.agentName = agentName;
 	}
 
-	public int getAgentType() {
+	public Integer getAgentType() {
 		return agentType;
 	}
 
-	public void setAgentType(int agentType) {
+	public void setAgentType(Integer agentType) {
 		this.agentType = agentType;
 	}
 
