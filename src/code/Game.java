@@ -8,9 +8,9 @@ public class Game {
 	static int RED = 1; static int BLUE = 0;
 	
 	public static void main(String[] args){
-		board = new Board();
+		setBoard(new Board());
 		turn = RED;
-		winner = null;
+		winner = "";
 	}
 	
 	public void setTurn(int turn){
@@ -21,9 +21,19 @@ public class Game {
 	public static void setWinner(String win){
 		winner = win;
 	}
-	
+	public String getWinner(){
+		return winner;
+	}
 	public static int getTurn(){
 		return turn;
+	}
+
+	public Board getBoard() {
+		return board;
+	}
+
+	public static void setBoard(Board board) {
+		Game.board = board;
 	}
 	
 	
