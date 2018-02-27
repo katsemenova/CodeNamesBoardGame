@@ -7,14 +7,19 @@ public class Location {
 	private int xCoord;
 	private int yCoord;
 	private boolean visible;
+	private String codeName;
 	
 	public Location(int x, int y, Person person){
 		this.person = person;
 		setxCoord(x);
 		setyCoord(y);
 		visible = false;
+		codeName = person.getAgentName();
+		
 	}
-
+	public String getLocationCodename(){
+		return codeName;
+	}
 	public boolean isVisible() {
 		return visible;
 	}
