@@ -127,50 +127,43 @@ public class Board {
 	}
 
 	public boolean checkWinningState() {
-		return allAgentsRevealed() || checkForAssassin();
-	}
-	public boolean checkForAssassin() {
-				// checks for assassin
-						if (assassinRevealed) {
-						if (Game.getTurn() == 1) {
-								Game.setWinner("Blue");
-								return true;
-							} else {
-								Game.setWinner("Red");
-								return true;
-							}
-		
-						}
-						return false;
-		 	}
-	public boolean allAgentsRevealed() {
- 		int countRed = 0;
- 		int countBlue = 0;
- 		// tracks how many agents revealed
- 		for (int r = 0; r < 5; r++) {
- 			for (int c = 0; c < 5; c++) {
- 				Location loc = locations[r][c];
- 				if (loc.isVisible() && loc.getPerson().getAgentType() == 0)
- 					countBlue++;
- 				else if (loc.isVisible() && loc.getPerson().getAgentType() == 1)
- 					countRed++;
- 			}
- 		}
- 
- 		if (countRed == 9) {
- 			Game.setWinner("Red");
- 			return true;
- 		}
- 
- 		if (countBlue == 8) {
- 			Game.setWinner("Blue");
- 			return true;
- 		}
+		// checks for assassin
+		if (assassinRevealed) {
+			if (Game.getTurn() == 1) {
+				Game.setWinner("Blue");
+				return true;
+			} else {
+				Game.setWinner("Red");
+				return true;
+			}
 
-		
- 		return false;
-	}
+		}
+		int countRed = 0;
+		int countBlue = 0;
+		// tracks how many agents revealed
+		for (int r = 0; r < 5; r++) {
+			for (int c = 0; c < 5; c++) {
+				Location loc = locations[r][c];
+				if (loc.isVisible() && loc.getPerson().getAgentType() == 0)
+					countBlue++;
+				else if (loc.isVisible() && loc.getPerson().getAgentType() == 1)
+					countRed++;
+			}
+		}
 
+		if (countRed == 9) {
+			Game.setWinner("Red");
+			return true;
+		}
+
+		if (countBlue == 8) {
+			Game.setWinner("Blue");
+			return true;
+		}
+
+		return false;
+
+	}
 
 	public boolean makeAGuess(String guess) {
 		cardCount--;
