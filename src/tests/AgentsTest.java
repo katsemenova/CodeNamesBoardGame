@@ -19,11 +19,10 @@ public class AgentsTest {
 	
 	@Test
 	public void testPersonsForNull() { 
-		Location[][] theLocations;
 		Board b = new Board();
 //		b.setFile("testfiles/codenames.txt");
 //		b.assignLocations();
-		theLocations = b.getLocations();
+		Location[][] theLocations = b.getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
 				
@@ -36,11 +35,10 @@ public class AgentsTest {
 	@Test
 	public void testRedAgents() {
 		int rCount = 0;
-		Location[][] theLocations;
 		Board b = new Board();
 //		b.setFile("testfiles/codenames.txt");
 //		b.assignLocations();
-		theLocations = b.getLocations();
+		Location[][] theLocations = b.getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
 				if(theLocations[i][j].getPerson().getAgentType() == 1) {
@@ -55,11 +53,10 @@ public class AgentsTest {
 	@Test
 	public void testBlueAgents() {
 		int bCount = 0;
-		Location[][] theLocations;
 		Board b = new Board();
 //		b.setFile("testfiles/codenames.txt");
 //		b.assignLocations();
-		theLocations = b.getLocations();
+		Location[][] theLocations = b.getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
 				if(theLocations[i][j].getPerson().getAgentType() == 0) {
@@ -74,11 +71,10 @@ public class AgentsTest {
 	@Test
 	public void testAssassins() {
 		int aCount = 0;
-		Location[][] theLocations;
 		Board b = new Board();
 //		b.setFile("testfiles/codenames.txt");
 //		b.assignLocations();
-		theLocations = b.getLocations();
+		Location[][] theLocations = b.getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
 				if(theLocations[i][j].getPerson().getAgentType() == 2) {
@@ -88,6 +84,24 @@ public class AgentsTest {
 			}
 		}
 		assertEquals(1,aCount);
+	}
+	
+	@Test
+	public void testBystanders() {
+		int byCount = 0;
+		Board b = new Board();
+//		b.setFile("testfiles/codenames.txt");
+//		b.assignLocations();
+		Location[][] theLocations = b.getLocations();
+		for (int i = 0; i < theLocations.length; i++) {
+			for (int j = 0; j < theLocations[0].length; j++) {
+				if(theLocations[i][j].getPerson().getAgentType() == 3) {
+					byCount += 1;
+				}
+				
+			}
+		}
+		assertEquals(7,byCount);
 	}
 
 	}
