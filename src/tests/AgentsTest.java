@@ -21,8 +21,8 @@ public class AgentsTest {
 	public void testPersonsForNull() { 
 		Location[][] theLocations;
 		Board b = new Board();
-		b.setFile("testfiles/codenames.txt");
-		b.assignLocations();
+//		b.setFile("testfiles/codenames.txt");
+//		b.assignLocations();
 		theLocations = b.getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
@@ -38,8 +38,8 @@ public class AgentsTest {
 		int rCount = 0;
 		Location[][] theLocations;
 		Board b = new Board();
-		b.setFile("testfiles/codenames.txt");
-		b.assignLocations();
+//		b.setFile("testfiles/codenames.txt");
+//		b.assignLocations();
 		theLocations = b.getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
@@ -51,5 +51,43 @@ public class AgentsTest {
 		}
 		assertEquals(9,rCount);
 	}
+	
+	@Test
+	public void testBlueAgents() {
+		int bCount = 0;
+		Location[][] theLocations;
+		Board b = new Board();
+//		b.setFile("testfiles/codenames.txt");
+//		b.assignLocations();
+		theLocations = b.getLocations();
+		for (int i = 0; i < theLocations.length; i++) {
+			for (int j = 0; j < theLocations[0].length; j++) {
+				if(theLocations[i][j].getPerson().getAgentType() == 0) {
+					bCount += 1;
+				}
+				
+			}
+		}
+		assertEquals(8,bCount);
+	}
+	
+	@Test
+	public void testAssassins() {
+		int aCount = 0;
+		Location[][] theLocations;
+		Board b = new Board();
+//		b.setFile("testfiles/codenames.txt");
+//		b.assignLocations();
+		theLocations = b.getLocations();
+		for (int i = 0; i < theLocations.length; i++) {
+			for (int j = 0; j < theLocations[0].length; j++) {
+				if(theLocations[i][j].getPerson().getAgentType() == 2) {
+					aCount += 1;
+				}
+				
+			}
+		}
+		assertEquals(1,aCount);
+	}
 
-}
+	}

@@ -97,21 +97,20 @@ public class Board {
 		List<Integer> agentTypes = createAgentTypeList();
 		List<String> codenames = selectRandomCodeNames();
 		List<Person> assignments = new ArrayList<Person>();
-		for (String name : codenames) {
-			for (Integer agentType : agentTypes) {
-				assignments.add(new Person(name, agentType));
-			}
+		for (int i = 0; i < 25; i++) {	
+			assignments.add(new Person(codenames.get(i), agentTypes.get(i)));
 		}
 		return assignments;
 	}
 	
 	public void assignLocations() {
 		locations = new Location[5][5];
+		List<Person> people = assignPerson();
+		int indx = 0;
 		for (int i = 0; i < locations.length; i++) {
 			for (int j = 0; j < locations[0].length; j++) {
-				for (Person p : assignPerson()) {
-					locations[i][j] = new Location(i, j, p);
-				}
+				locations[i][j] = new Location(i, j, people.get(indx));
+				indx++;
 			}
 		}
 	}

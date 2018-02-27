@@ -8,7 +8,8 @@ public class Person {
 
 	public Person(String codename, Integer agentType) {
 		setAgentName(codename);
-		setAgentType(agentType); // "Red", "Blue", "Bystander", "Assassin"
+		this.agentType = agentType;
+		//setAgentType(agentType); // "Red" = 1, "Blue" = 0, "Bystander" = 3, "Assassin" = 2
 	}
 
 	public String getAgentName() {
@@ -21,10 +22,6 @@ public class Person {
 
 	public Integer getAgentType() {
 		return agentType;
-	}
-
-	public void setAgentType(Integer agentType) {
-		this.agentType = agentType;
 	}
 
 }
