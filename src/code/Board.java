@@ -18,7 +18,7 @@ public class Board {
 
 	private Location[][] locations;
 	private String file;
-	List<String> codenames;
+	private List<String> codenames;
 	private int cardCount;
 
 	public Board() {
@@ -27,7 +27,11 @@ public class Board {
 		setFile("testfiles/codenames.txt");
 		assignLocations();
 	}
-
+	
+	
+	public int getCount(){
+		return cardCount;
+	}
 	public String getFile() {
 		return file;
 	}
@@ -183,13 +187,16 @@ public class Board {
  		return false;
 	}
 
-	public boolean makeAGuess(String guess) {
+	public boolean selectCodeName(String codeName) {
 		cardCount--;
 		int personRevealed = 5;
+		if(codeName == null)
+			throw new NullPointerException();
+		
 		for (int r = 0; r < 5; r++) {
 			for (int c = 0; c < 5; c++) {
 				Location loc = locations[r][c];
-				if (guess.equals(loc.getPerson().getAgentName())) {
+				if (codeName.equals(loc.getPerson().getAgentName())) {
 					loc.setVisible(true);
 					personRevealed = loc.getPerson().getAgentType();
 				}
@@ -203,7 +210,8 @@ public class Board {
 	}
 
 	public List<String> getCodenamesUsed() {
-		// TODO Auto-generated method stub
 		return codenames;
 	}
+	
+	
 }
