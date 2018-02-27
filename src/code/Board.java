@@ -125,19 +125,14 @@ public class Board {
 		}
 		return true;
 	}
-
+	// broke up into two helper methods for efficient testing 
 	public boolean checkWinningState() {
-		// checks for assassin
-		if (assassinRevealed) {
-			if (Game.getTurn() == 1) {
-				Game.setWinner("Blue");
-				return true;
-			} else {
-				Game.setWinner("Red");
-				return true;
-			}
+		
+		return allAgentsRevealed() || checkForAssassin();
 
-		}
+	}
+
+	public boolean allAgentsRevealed() {
 		int countRed = 0;
 		int countBlue = 0;
 		// tracks how many agents revealed
@@ -160,9 +155,23 @@ public class Board {
 			Game.setWinner("Blue");
 			return true;
 		}
-
+		
 		return false;
+	}
 
+	public boolean checkForAssassin() {
+		// checks for assassin
+				if (assassinRevealed) {
+					if (Game.getTurn() == 1) {
+						Game.setWinner("Blue");
+						return true;
+					} else {
+						Game.setWinner("Red");
+						return true;
+					}
+
+				}
+				return false;
 	}
 
 	public boolean makeAGuess(String guess) {
