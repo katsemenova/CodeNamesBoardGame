@@ -60,13 +60,11 @@ public class WinningStateTest {
 		Game game = new Game();
 		Board board = game.getBoard();
 		Location[][] arr=board.getLocations();
-		int count=0;
 		for(int i=0;i<5;i++){
 			for(int n=0;n<5;n++){
 				Location loc =arr[i][n];
 				if(loc.getPerson().getAgentType()==0){
 					loc.setVisible(true);
-					count++;
 				}
 			}
 		}
