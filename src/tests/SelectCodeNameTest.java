@@ -28,7 +28,7 @@ public class SelectCodeNameTest {
 		String codeName = "a";
 		board.selectCodeName(codeName);
 		int initialCount = board.getCount();
-		assertEquals("The count should not have decremented",initialCount,board.getCount());
+		assertEquals("The invalid codeName shouldn't decrement the count",initialCount,board.getCount());
 	}
 	
 	@Test (expected = NullPointerException.class)
@@ -38,7 +38,7 @@ public class SelectCodeNameTest {
 		String codeName = null;
 		board.selectCodeName(codeName);
 		int initialCount = board.getCount();
-		assertEquals("exception not thrown",initialCount,board.getCount());
+		assertEquals("Exception not thrown",initialCount,board.getCount());
 	}
 	
 	@Test
@@ -84,17 +84,21 @@ public class SelectCodeNameTest {
 					false, board.selectCodeName(blueAgent.getLocationCodename()));
 				
 		}
-		if(turn == 2){
+		game.setTurn(0);
+		blueAgent.setVisible(false);
+		redAgent.setVisible(false);
+		if(turn == 0){
 			assertEquals("It was blue's turn, and they selected their own agent",
 				true, board.selectCodeName(blueAgent.getLocationCodename()));
 			assertEquals("It was blue's turn, and they selected a red agent",
 					false, board.selectCodeName(redAgent.getLocationCodename()));
 				
 		}
-		assertEquals("Assassin was selected and its neither teams agent",
-				false, board.selectCodeName(assassin.getLocationCodename()));
 		assertEquals("Bystander was selected and its neither teams agent",
 				false, board.selectCodeName(bystander.getLocationCodename()));
+	
+		assertEquals("Assassin was selected and its neither teams agent",
+				false, board.selectCodeName(assassin.getLocationCodename()));
 	}
 
 }
