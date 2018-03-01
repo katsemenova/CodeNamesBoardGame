@@ -8,43 +8,37 @@ public class Person {
 	 */
 	private String agentName;
 	/*
-	 * 
+	 * Integer that holds the int value that stands for a specific agent type
+	 *  "Red" = 1, "Blue" = 0, "Bystander" = 3, "Assassin" = 2
 	 */
 	private Integer agentType;
 	/**
 	   * 
-	   * 
-	   * @param 
-	   * @return 
+	   * @param codename the assigned codeName of this person instance
+	   * @param agentType the assigned agentType of this person instance 
 	   */
 	public Person(String codename, Integer agentType) {
 		setAgentName(codename);
 		this.agentType = agentType;
-		//setAgentType(agentType); // "Red" = 1, "Blue" = 0, "Bystander" = 3, "Assassin" = 2
+		
 	}
 	/**
 	   * 
-	   * 
-	   * @param 
-	   * @return 
+	   * @return the String that is agents codename
 	   */
 	public String getAgentName() {
 		return agentName;
 	}
 	/**
 	   * 
-	   * 
-	   * @param 
-	   * @return 
+	   * @param String that sets the codename of the agent
 	   */
 	public void setAgentName(String agentName) {
 		this.agentName = agentName;
 	}
 	/**
 	   * 
-	   * 
-	   * @param 
-	   * @return 
+	   * @return {@code int} that depicts which type of person this is 
 	   */
 	public Integer getAgentType() {
 		return agentType;
