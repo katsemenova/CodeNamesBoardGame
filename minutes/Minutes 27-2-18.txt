@@ -1,0 +1,26 @@
+Meeting Minutes for _add meeting date 27-2-18:
+
+Meeting Attendance: (list all students who were present) [1 minute]
+	Put an 'M' next to the name of the student taking minutes
+	Kateryna Semenova 
+	Aaron Kong
+	Xiyin Liang
+	Hollis Pauquette
+	Sidney Bloch (M)
+	
+	
+Tasks completed since last meeting [1-2 minutes]
+	* finished Board, Game, Location, And Person classes
+
+Tasks worked upon but not completed since last meeting [2-4 minutes]
+	* Adjusting tests to encompass line by line coverage
+	
+Goals for the next meeting [20+ minutes]
+	* Finish 100% test coverage
+	* Start Documentation of methods, and of tests.txt
+	
+Schedule for the next week's set of pair programming meetings [3-4 minutes]
+	* Sid - Aaron
+	* Hollis - Xiying
+	* Kat - Hollis
+
