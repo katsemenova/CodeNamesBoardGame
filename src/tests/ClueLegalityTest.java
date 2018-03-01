@@ -17,8 +17,7 @@ public class ClueLegalityTest {
 		Board b = new Board();
 		
 		List<String> agentNames = b.getCodenamesUsed();
-		
-		assertEquals(false, b.legalClue(agentNames.get(1)));
+		assertEquals("Agent is not revealed yet, so using their name is not legal ",false, b.legalClue(agentNames.get(1)));
 		assertEquals("Agent is not revealed yet, so using their name is not legal ",false, b.legalClue(agentNames.get(0)));
 
 
@@ -26,7 +25,7 @@ public class ClueLegalityTest {
 	@Test
 	public void legalClueEmptyStringTest(){
 		Board b = new Board();
-		assertEquals(false, b.legalClue(""));
+		assertEquals("An empty string shouldn't be a clue",false, b.legalClue(""));
 	}
 	
 	@Test
@@ -34,7 +33,7 @@ public class ClueLegalityTest {
 		Board b = new Board();
 		b.getLocations()[1][1].setVisible(true);
 		String testName = b.getLocations()[1][1].getPerson().getAgentName();
-		assertEquals(true,b.legalClue(testName));
+		assertEquals("A codename of a revealed agent is a valid clue",true,b.legalClue(testName));
 		
 		
 		

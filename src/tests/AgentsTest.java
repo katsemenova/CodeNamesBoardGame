@@ -16,7 +16,8 @@ public class AgentsTest {
 	// Third, make instance of Board, keep track of number of red, blue, assassins,
 	// bystanders
 
-	// @Author Hollis Pauquette, Aaron Kong
+	// @Author Hollis Pauquette, 
+	// @author Aaron Kong
 	
 	private Board b = new Board();
 
