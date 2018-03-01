@@ -37,4 +37,8 @@ public class RedTeamMoveFirstTest {
 		}
 		assertEquals("The are not 25 locations initialized",25,index);
 	}
+
+
+
+
 }
