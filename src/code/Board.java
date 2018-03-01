@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,11 +17,27 @@ import java.util.List;
 
 public class Board {
 
+	/*
+	 * 2D array that holds the location instances of each card/agent
+	 */
 	private Location[][] locations;
+	/*
+	 * String to hold the source for the file
+	 */
 	private String file;
+	/*
+	 * List to hold the 25 randomly generated codenames for the current game.
+	 */
 	private List<String> codenames;
+	/*
+	 * Int to keep count of locations that are not visible yet
+	 */
 	private int cardCount;
 
+	/*
+	 * Constructor to create the board, set up count, assign the fileName, and call the method that generates random 
+	 * codename and agent assignments to locations
+	 */
 	public Board() {
 		locations = new Location[5][5];
 		cardCount = 25;
@@ -28,21 +45,7 @@ public class Board {
 		assignLocations();
 	}
 	
-	
-	public int getCount(){
-		return cardCount;
-	}
-	public String getFile() {
-		return file;
-	}
 
-	public void setFile(String filename) {
-		file = filename;
-	}
-	
-	public Location[][] getLocations() {
-		return locations;
-	}
 
 	public List<String> readCodeNamesFromFile() {
 		List<String> codenames = new ArrayList<String>();
@@ -68,31 +71,9 @@ public class Board {
 
 	public List<Integer> createAgentTypeList() {
 		List<Integer> agentTypes = new ArrayList<Integer>();
-		agentTypes.add(0);
-		agentTypes.add(0);
-		agentTypes.add(0);
-		agentTypes.add(0);
-		agentTypes.add(0);
-		agentTypes.add(0);
-		agentTypes.add(0);
-		agentTypes.add(0);
-		agentTypes.add(1);
-		agentTypes.add(1);
-		agentTypes.add(1);
-		agentTypes.add(1);
-		agentTypes.add(1);
-		agentTypes.add(1);
-		agentTypes.add(1);
-		agentTypes.add(1);
-		agentTypes.add(1);
-		agentTypes.add(2);
-		agentTypes.add(3);
-		agentTypes.add(3);
-		agentTypes.add(3);
-		agentTypes.add(3);
-		agentTypes.add(3);
-		agentTypes.add(3);
-		agentTypes.add(3);
+		Integer[] otherList = new Integer[] {0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,2,3,3,3,3,3,3,3};
+		agentTypes.addAll(Arrays.asList(otherList));
+		Collections.shuffle(agentTypes);
 		return agentTypes;
 	}
 
@@ -118,7 +99,14 @@ public class Board {
 		}
 	}
 
-	// game rule
+	/**
+	   * Determines if a clue given by the spymaster is legal or not
+	   * It is legal if and only it is NOT the codename of an unrevealed agent. 
+	   * However if the agent is already revealed, their codename could be a legal clue 
+	   * 
+	   * @param String which is the clue given by the spymaster
+	   * @return {@code true} if the clue is legal or {@code false} if it is not
+	   */
 	public boolean legalClue(String clue) {
 		if(clue == null)
 			throw new NullPointerException();
@@ -133,7 +121,8 @@ public class Board {
 		}
 		return true;
 	}
-
+	
+	
 	public boolean checkWinningState() {
 		return allAgentsRevealed() || checkForAssassin();
 	}
@@ -214,4 +203,18 @@ public class Board {
 	}
 	
 	
+	public int getCount(){
+		return cardCount;
+	}
+	public String getFile() {
+		return file;
+	}
+
+	public void setFile(String filename) {
+		file = filename;
+	}
+	
+	public Location[][] getLocations() {
+		return locations;
+	}
 }
