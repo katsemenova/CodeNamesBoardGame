@@ -1,0 +1,163 @@
+﻿AgentsTest.Java - this class has one private board variable used to ensure that all tests are done within the same board instance.
+        testPersonsForNull() - 
+			This test ensures that there are no null Location instances in the 2D array by 
+			testing every spot in the array for null.The test also ensures that every Person 
+			was instatited correctly by testing that every agent name is not null and by 
+			ensuring that the agent type integers are not null and are within the bounds for 
+			an agent type (0-3). 0 = Blue, 1 = red, 2 = assassin, 3 = bystander
+        testRedAgents() - 
+			This test ensures that the board has the correct number of Red agents by 
+			incrementing a counter every time a red agent is encountered in the board. 
+			It checks that there is 9 red agents. 
+		testBlueAgents() - 
+			This test ensures that the board has the correct number of Blue agents by 
+			incrementing a counter every time a blue agent is encountered in the board. 
+			It checks that there is 8 blue agents. 
+		testAssassins() - 
+			This test ensures that the board has the correct number of Assassins by 
+			incrementing a counter every time an assassin is encountered in the board. 
+			It checks that there is 1 assassin.
+		testBystanders() - 
+			This test ensures that the board has the correct number of Bystanders by 
+			incrementing a counter every time a bystander is encountered in the board.
+			It checks that there is 7 bystanders. 
+        testRandomAssigning() -
+			This test ensures that the agent types are assigned differently(randomly) 
+			each time the 2D array of locations is created, meaning that no two location 
+			arrays will have the same layout of agents. This is accomplished by creating 
+			two 2d arrays of location instances and ensuring that the two 2D arrays are 
+			not equal to each other by going through the array one by one and seeing whether 
+			the Location instances at the same coordinates are the same. If at least one 
+			agent type at one location array is different from the agent at the parallel 
+			location of the second location array, we know that the arrays have a different 
+			layout. Thus the test asserts that the agents are randomly assigned to locations. 
+
+BoardTest.Java - this class has one private variable of the 
+				 board class that is used in the entirety of the test class.
+        createBoardTest() -
+			This test ensures, that the instantiation of the board class successfully 
+			creates 25 location instances in a 2d array. Instantiates the board class, 
+			and requests the locations on the board to be put into a 2d array. This 2d 
+			array is checked for the correct number of values, and then iterates through 
+			the 2d array to check that the elements are not null.
+        readCodeNamesTest() - 
+			This test method ensures that our program successfully reads a file, and 
+			inputs the elements into a list. The test sets the file to a test file with 
+			fewer elements and calls the reader method from the Board class to put the 
+			elements in an ArrayList. The Arraylist containing the method return is sanity 
+			checked against the manually entered ArrayList.
+		distinctCodeNames() - 
+			Tests randomization of the codenames. By first creating 2 separate instances 
+			of a board, we can store the codenames in Arraylists and check equality with .equals().
+        createAgentTypeListTest() -
+			Tests the list of agents for 25 Person objects. A list of agent types is 
+			returned from the Board, and stored in an ArrayList. A loop iterates through
+            the list and counts agent types to ensure the correct number of agents are created.
+
+ClueLegalityTest.java
+        legalClueTestAgentName()- 
+			This test ensures that when a spymaster uses a clue that is also a codename of an 
+			unrevealed agent (visibility = false) the clue is deemed not legal. This test 
+			creates a board instance first, then set a new List<String> equals to the List of 
+			codeNames used for the 25 locations. It ensures that the method board.legalClue() 
+			return false when the the clue is one of the agentNames/codeNames of unrevealed agents.
+        legalClueEmptyStringTest()-
+			This test ensures that when an empty string was passed in the clue it is not legal. 
+			This test creates a board instance first, then ensures that the method board.legalClue() 
+			return false when an empty string is passed in.
+        legalClueVisibleNameTest()-
+			This test ensures that when the “clue” a spymaster uses is one of the codenames of 
+			revealed agents, then it is a legal clue. This test creates a board instance first, 
+			then set the visibility of the agent on board.getLocations()[1][1] to true, we use 
+			the name of the revealed agent at locations[1][1] as the clue for board.legalClue().
+			Determining that the clue is legal since the agent has already been revealed. 
+
+RedTeamMoveFirstTest.Java
+		redMoveFirst() -
+			This test ensures that red team always moves first when red team equals to turn 
+			1 by using the getTurn() method in the game class.
+        boardLocationsCreatedCorrectlyTest() -
+			This test ensures that the creation of 25 location instances are created correctly 
+			and they are not revealed. These are all done in the for loops. Then if location 
+			does not equal to null. So index which is a int instance that is created before 
+			the for loop increases. Then the test ensures that locations are not visible when 
+			location equals to false; person is true when it is not null for the location; 
+			also, codename is not null so that each location can successfully assign a codename. 
+			After the for loop, it tests the number of location instances. 
+
+SelectCodeNameTest.java
+        selectCodeNameDecrementCountTest() - 
+			This test ensures that when a team selects a codeName to be revealed, that the 
+			cardCount gets smaller by one. Card count is the count of the unrevealed locations. 
+        selectCodeNameWrongCodenameTest() - 
+			This test ensures that when a codeName that is not a valid codeName is selected 
+			to be revealed the count shouldn’t be decremented. 
+		selectCodeNameNullTest() - 
+			This test ensues that when a codeName is passed that is null the count isn’t decremented 
+			and an exception is thrown, showing you can’t pass null as a paramater to the 
+			selectCodeName() method. 
+		selectCodeNameUpdateLocationTest() - 
+			This test ensures that when a codename of a location was selected, that location’s
+			visibility changes from visible = false (initialVisibility) to visible = true after 
+			the board.selectCodeName(codeName) method was called. Thus checking that location 
+			visibility is updated correctly. 
+		selectCodeNameReturnsCorrectBooleanTest() - 
+			This test ensures that board.selectCodeName(codename) returns true if a team 
+			revealed their own agent and false otherwise. It loops through the 2d array 
+			and assigns an instance of each agent type to its own Location instance. Then, 
+			since the first turn is Red team’s the test checks that when a red team selects 
+			a codeName of a red agent the method returns true. Then it checks if the red 
+			team selects a blue agent, that the method return false. After that the test 
+			resets the instances of blue and red agents to be invisible again (since 
+			board.selectCodeName() set them to visible) and gives the turn to the blue 
+			team. It then tests the same things for when blue team selects a blue agents 
+			and a red agent. Then it also tests that the method returns false when a team 
+			selects either a bystander  or an assassin.
+
+WinningStateTest.Java
+        checkForAssassinTestNoAssassin() - 
+			Tests that ensures that the method board.checkForAssassin() returns false when 
+			there is no assassin visible on the board. When a game instance is created, so is the 
+			board instance. All the locations created in the board are not visible. Hence the test 
+			checks that checkForAssassin() returns false when there is no way an assassin can be 
+			visible. checkForAssassin() is a method that is used in determining one of the cases of a winning state. 
+        checkForAssassinTestWithAssassin() - 
+			Test that ensures that the method board.checkForAssassin() correctly returns 
+			true when there is an assassin that has been revealed on the board. The test 
+			loops through all the locations until it finds where the assassin is located. 
+			Then it sets the visibility of that assassin to visible on the board. The 
+			assertEquals checks that once an assassin is visible the method returns true, 
+			meaning the game is in a winning state. 
+        allAgentsRevealedTestNoWinner() - 
+			This test runs the board.allAgentsRevealed() method when there are no agents 
+			visible, expecting that there will be no winner and that the game will not be 
+			in a winning state. The method board.allAgentsRevealed() is the second half 
+			of the checkWinningState() method. This half tests the second condition of 
+			the winning state, and that in this case there shouldn’t be a winning state. 
+        allAgentsRevealedTestBlueWinner() - 
+			This method tests if the winner will be correctly determined to Blue team when 
+			all of the blue team’s agents are revealed (8 blue agents). After creating an 
+			instance of the game class. This method creates references to the board and 
+			the 2d array of locations on the board. Then it loops through all the locations 
+			and sets the blue agents to visible = true (aka “Revealed”). The assertEquals 
+			test that board.allAgentsRevealed() method returns true, correctly determining 
+			that the game is in a winning state.
+        allAgentsRevealedTestRedWinner() - 
+			This method tests if the winner will be correctly determined to Red team when 
+			all of the red team’s agents are revealed (9 red agents). After creating an 
+			instance of the game class. This method creates references to the board and the 
+			2d array of locations on the board. Then it loops through all the locations and 
+			sets the red agents to be visible (aka “Revealed”). The assertEquals test that 
+			board.allAgentsRevealed() method returns true, correctly determining that the 
+			game is in a winning state.
+        testAssassinRevealedByRed() -
+			This method tests to make sure Blue team wins after an assassin is revealed. 
+			The method does this by finding the assassin on the board and setting making 
+			it visible. It then sets the game’s turn to the Red team and tests whether the 
+			Blue team won.
+		testAssassinRevealedByBlue() -
+			This method tests to make sure Red team wins after an assassin is revealed. 
+			The method does this by finding the assassin on the board and setting making 
+			it visible. It then sets the game’s turn to the Blue team and tests whether the 
+			Red team won.
+
