@@ -18,9 +18,14 @@ Tasks worked upon but not completed since last meeting [2-4 minutes]
 Goals for the next meeting [20+ minutes]
 	* Finish 100% test coverage
 	* Start Documentation of methods, and of tests.txt
+	* Submit project.
+	* ...
+	* Profit?
 	
 Schedule for the next week's set of pair programming meetings [3-4 minutes]
 	* Sid - Aaron
-	* Hollis - Xiying
+	* Hollis - Xiyin
 	* Kat - Hollis
+	* Sid - Xiyin
+	* Kat - Aaron
 

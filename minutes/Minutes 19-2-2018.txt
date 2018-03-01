@@ -1,0 +1,30 @@
+Meeting Minutes for _add meeting date 02/19/2018:
+Meeting Attendance: (list all students who were present) [1 minute]
+	Kateryna Semenova (M)
+	Aaron Kong
+	Xiyin Liang
+	Hollis Pauquette
+	Sidney Bloch
+	
+	
+Tasks completed since last meeting [1-2 minutes]
+	This is our first meeting in recitation
+
+Tasks worked upon but not completed since last meeting [2-4 minutes]
+	
+Goals for the next meeting [20+ minutes]
+	- JUnit tests
+	- Create classes for the game set up
+	- methods for set up 
+	- familiarize yourself with the game
+	- document test cases
+
+Schedule for the next week's set of pair programming meetings [3-4 minutes]
+	* (Pair programming sessions should be two hours long (no more, no less))
+	  (Every team member should participate in two sessions each week, with each session including a different team member)
+	  02/20/18
+	  	1) Kateryna and Sidney
+	  	2) Hollis and Aaron
+	  	3) Kateryna and Xiyin
+	  	4) Aaron and Xiyin
+	  	5) Sidney and Hollis
