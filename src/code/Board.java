@@ -148,19 +148,28 @@ public class Board {
 	}
 	
 	/**
+	   * This method determines whether the game is in a winning state, 
+	   * A winning state is when:
+	   * - either all 9 of the red team's agents are revealed, or all 8 of the blue teams agents are revealed
+	   * - or when an assassin is revealed and the game ends. 
 	   * 
+	   * The method is split up into two methods that return booleans for both testing and readability purposes
 	   * 
-	   * @param 
-	   * @return 
+	   * @param none
+	   * @return {@code true} if the board is in a winning state {@code false} otherwise 
 	   */
 	public boolean checkWinningState() {
 		return allAgentsRevealed() || checkForAssassin();
 	}
 	/**
 	   * 
+	   * Determined if a team Reveals the Assassin, 
+	   * then that team is immediately "killed". 
+	   * The game is over and the other team is declared the winner.
 	   * 
-	   * @param 
-	   * @return 
+	   * 
+	   * @param none
+	   * @return {@code true} if one of the locations is revealed and the agent is an assassin {@code false} otherwise
 	   */
 	public boolean checkForAssassin() {
 				
@@ -185,10 +194,15 @@ public class Board {
 						return false;
 		 	}
 	/**
+	   * Determines if either team revealed all of their agents
+	   * If all 9 Red Agents are Revealed, the Red team wins. 
+	   * This is true even if it is a Blue team selection that Revealed the final Red Agent.
+	   * If all 8 Blue Agents are Revealed, the Blue team wins.
+	   *  This is true even if it is a Red team selection that Revealed the final Blue Agent.
 	   * 
 	   * 
-	   * @param 
-	   * @return 
+	   * @param none
+	   * @return {@code true} if all agents of either team are revealed
 	   */
 	public boolean allAgentsRevealed() {
  		int countRed = 0;
@@ -218,13 +232,21 @@ public class Board {
  		return false;
 	}
 	/**
-	   * 
-	   * 
-	   * @param 
-	   * @return 
+	 
+	   * When a codeName is selected and if it matches an agent that is unrevealed the following occur:
+	   * - cardCound is decremented 
+	   * - Location is updated to be visible
+	   * - returns a boolean which states if the agent revealed matches  
+	   * if the codeName doesn't match any of the agents who are unrevealed (ie the agent with that codename was already revealed) 
+	   * nothing happens to count and location and the method returns false.
+	   *
+	   * @param String that is the codeName of an agent who is set to be revealed.
+	   * @return {@code true} if the agent who's codename is revealed is an agent of the team who's turn it is
+	   *  else {@code false} if the agent revealed isn't the color of the team who revelaed them or if the codeName doesn't
+	   *  match any of the agents that are still unrevealed. 
 	   */
 	public boolean selectCodeName(String codeName) {
-		cardCount--;
+		
 		int personRevealed = 5;
 		if(codeName == null)
 			throw new NullPointerException();
@@ -233,6 +255,7 @@ public class Board {
 			for (int c = 0; c < 5; c++) {
 				Location loc = locations[r][c];
 				if (codeName.equals(loc.getPerson().getAgentName())) {
+					cardCount--;
 					loc.setVisible(true);
 					personRevealed = loc.getPerson().getAgentType();
 				}
@@ -246,9 +269,7 @@ public class Board {
 	}
 	/**
 	   * 
-	   * 
-	   * @param 
-	   * @return 
+	   * @return a List of codeNames used for the 25 locations
 	   */
 	public List<String> getCodenamesUsed() {
 		return codenames;
@@ -256,9 +277,7 @@ public class Board {
 	
 	/**
 	   * 
-	   * 
-	   * @param 
-	   * @return 
+	   * @return the number of locations/cards that have not yet been revealed
 	   */
 	public int getCount(){
 		return cardCount;
@@ -266,26 +285,21 @@ public class Board {
 	/**
 	   * 
 	   * 
-	   * @param 
-	   * @return 
+	   * @return the String that is the src of a file used to pick random codenames
 	   */
 	public String getFile() {
 		return file;
 	}
 	/**
 	   * 
-	   * 
-	   * @param 
-	   * @return 
+	   * @param String that is the source of the file that holds all the possible codenames
 	   */
 	public void setFile(String filename) {
 		file = filename;
 	}
 	/**
 	   * 
-	   * 
-	   * @param 
-	   * @return 
+	   * @return 2d array of Location instances, that store the agents
 	   */
 	public Location[][] getLocations() {
 		return locations;
