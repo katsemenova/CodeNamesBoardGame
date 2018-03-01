@@ -20,8 +20,9 @@ public class WinningStateTest {
 			for(int n=0;n<5;n++){
 				Location loc =arr[i][n];
 				if(loc.isVisible()&&loc.getPerson().getAgentType()==2) {//if location is visible and it's an assassin.
-					assassinExists = true;	
-				}
+					assassinExists = true;
+					
+			}
 			}
 		}
 		
@@ -40,21 +41,11 @@ public class WinningStateTest {
 				if(loc.getPerson().getAgentType()==2) {//if location is visible and it's an assassin.
 					loc.setVisible(true);
 					assassinExists = true;	
-					
 				}
 			}
 		}
-		if(assassinExists){
-			if(game.getWinner() == "Red")
-				assertEquals("The game determined the winner incorrectly. the winner shouldn't be the person who revealed the assassin", true, 1!= game.getTurn());
-			else
-				assertEquals("The game determined the winner incorrectly. the winner shouldn't be the person who revealed the assassin", true, 0!= game.getTurn());
-				
-		}
-			
+		
 		assertEquals("checkForAssassin should return false as no assassin exists", true, board.checkForAssassin());
-		
-		
 	}
 	@Test
 	public void allAgentsRevealedTestNoWinner(){
@@ -100,5 +91,8 @@ public class WinningStateTest {
 		assertEquals("There is no winner when there should be one ",true, board.allAgentsRevealed());
 		assertEquals("The winner should be red","Red",game.getWinner());
 	}
+	
+	//test when assassin is revealed on red's turn, blue MUST win
+	//test when assassin revealed on blue's turn, red MUST win
 
 }

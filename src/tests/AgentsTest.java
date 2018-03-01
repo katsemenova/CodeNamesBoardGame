@@ -25,7 +25,9 @@ public class AgentsTest {
 		Location[][] theLocations = b.getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
-				
+				assertTrue(theLocations[i][j].getPerson().getAgentName() != null);
+				assertTrue(theLocations[i][j].getPerson().getAgentType() != null && theLocations[i][j].getPerson().getAgentType() <= 3);
+				assertTrue(theLocations[i][j].getPerson().getAgentType() != null && theLocations[i][j].getPerson().getAgentType() >= 0);
 				assertTrue(theLocations[i][j] != null);
 			}
 		}
