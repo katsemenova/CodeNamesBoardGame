@@ -44,7 +44,7 @@ public class BoardTest {
 				"mother", "Mr", "night", "number", "part", "people", "place", "point", "problem", "program", "question",
 				"right", "room", "school", "state", "story", "student", "study", "system", "thing", "time", "water",
 				"way", "week", "woman", "word", "work", "world", "year");
-		// System.out.println(act);
+		
 		assertEquals("Check your Read from File method", act, code);
 	}
 

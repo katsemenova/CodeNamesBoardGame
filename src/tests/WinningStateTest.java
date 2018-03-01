@@ -10,96 +10,131 @@ import code.Location;
 
 public class WinningStateTest {
 	@Test
-	public void checkForAssassinTestNoAssassin(){
+	public void checkForAssassinTestNoAssassin() {
 		Game game = new Game();
 		Board board = game.getBoard();
-		Location[][] arr= board.getLocations();
-		
+		Location[][] arr = board.getLocations();
+
 		boolean assassinExists = false;
-		for(int i=0;i<5;i++){
-			for(int n=0;n<5;n++){
-				Location loc =arr[i][n];
-				if(loc.isVisible()&&loc.getPerson().getAgentType()==2) {//if location is visible and it's an assassin.
+		for (int i = 0; i < 5; i++) {
+			for (int n = 0; n < 5; n++) {
+				Location loc = arr[i][n];
+				if (loc.isVisible() && loc.getPerson().getAgentType() == 2) {// if location is visible and it's an
+																				// assassin.
 					assassinExists = true;
-					
-			}
+
+				}
 			}
 		}
-		
-		assertEquals("checkForAssassin should return false as no assassin exists", assassinExists, board.checkForAssassin());
+
+		assertEquals("checkForAssassin should return false as no assassin exists", assassinExists,
+				board.checkForAssassin());
 	}
-	
+
 	@Test
-	public void checkForAssassinTestWithAssassin(){
+	public void checkForAssassinTestWithAssassin() {
 		Game game = new Game();
 		Board board = game.getBoard();
-		Location[][] arr=board.getLocations();
-		
-		for(int i=0;i<5;i++){
-			for(int n=0;n<5;n++){
-				Location loc =arr[i][n];
-				if(loc.getPerson().getAgentType()==2) {//if location is visible and it's an assassin.
+		Location[][] arr = board.getLocations();
+
+		for (int i = 0; i < 5; i++) {
+			for (int n = 0; n < 5; n++) {
+				Location loc = arr[i][n];
+				if (loc.getPerson().getAgentType() == 2) {// if location is visible and it's an assassin.
 					loc.setVisible(true);
 				}
 			}
 		}
 
-//		if(assassinExists){
-//			if(game.getWinner() == "Red")
-//				assertEquals("The game determined the winner incorrectly. the winner shouldn't be the person who revealed the assassin", true, 1!= game.getTurn());
-//			else
-//				assertEquals("The game determined the winner incorrectly. the winner shouldn't be the person who revealed the assassin", true, 0!= game.getTurn());
-//				
-//		}
-			
 		assertEquals("checkForAssassin should return false as no assassin exists", true, board.checkForAssassin());
 	}
+
 	@Test
-	public void allAgentsRevealedTestNoWinner(){
+	public void allAgentsRevealedTestNoWinner() {
 		Game game = new Game();
 		Board board = game.getBoard();
-		
-		assertEquals("There should be no winner since no agents are revealed",false, board.allAgentsRevealed());
-		assertEquals("There should be no winner declared","",game.getWinner()); //noWinner
-		
-	}
-	@Test
-	public void allAgentsRevealedTestBlueWinner(){
-		Game game = new Game();
-		Board board = game.getBoard();
-		Location[][] arr=board.getLocations();
-		int count=0;
-		for(int i=0;i<5;i++){
-			for(int n=0;n<5;n++){
-				Location loc =arr[i][n];
-				if(loc.getPerson().getAgentType()==0){
-					loc.setVisible(true);
-					count++;
-				}
-			}
-		}
-		assertEquals("There is no winner when there should be ",true, board.allAgentsRevealed());
-		assertEquals("The winner should be blue","Blue",game.getWinner());
+
+		assertEquals("There should be no winner since no agents are revealed", false, board.allAgentsRevealed());
+		assertEquals("There should be no winner declared", "", game.getWinner()); // noWinner
+
 	}
 
 	@Test
-	public void allAgentsRevealedTestRedWinner(){
+	public void allAgentsRevealedTestBlueWinner() {
 		Game game = new Game();
 		Board board = game.getBoard();
-		Location[][] arr=board.getLocations();
-		for(int i=0;i<5;i++){
-			for(int n=0;n<5;n++){
-				Location loc =arr[i][n];
-				if(loc.getPerson().getAgentType()==1){
+		Location[][] arr = board.getLocations();
+		for (int i = 0; i < 5; i++) {
+			for (int n = 0; n < 5; n++) {
+				Location loc = arr[i][n];
+				if (loc.getPerson().getAgentType() == 0) {
 					loc.setVisible(true);
 				}
 			}
 		}
-		assertEquals("There is no winner when there should be one ",true, board.allAgentsRevealed());
-		assertEquals("The winner should be red","Red",game.getWinner());
+		assertEquals("There is no winner when there should be ", true, board.allAgentsRevealed());
+		assertEquals("The winner should be blue", "Blue", game.getWinner());
 	}
-	
-	//test when assassin is revealed on red's turn, blue MUST win
-	//test when assassin revealed on blue's turn, red MUST win
+
+	@Test
+	public void allAgentsRevealedTestRedWinner() {
+		Game game = new Game();
+		Board board = game.getBoard();
+		Location[][] arr = board.getLocations();
+		for (int i = 0; i < 5; i++) {
+			for (int n = 0; n < 5; n++) {
+				Location loc = arr[i][n];
+				if (loc.getPerson().getAgentType() == 1) {
+					loc.setVisible(true);
+				}
+			}
+		}
+		assertEquals("There is no winner when there should be one ", true, board.allAgentsRevealed());
+		assertEquals("The winner should be red", "Red", game.getWinner());
+	}
+
+	@Test
+	public void testAssassinRevealedByRed() {
+		Board b = new Board();
+		Game game = new Game();
+		Location[][] arr = b.getLocations();
+
+		for (int i = 0; i < 5; i++) {
+			for (int n = 0; n < 5; n++) {
+				Location loc = arr[i][n];
+				if (loc.getPerson().getAgentType() == 2) { // if location is visible and it's an assassin.
+					loc.setVisible(true);
+				}
+			}
+			game.setTurn(1); // set turn to Red
+
+			assertEquals(
+					"The game determined the winner incorrectly. the winner shouldn't be the Red Team who revealed the assassin",
+					true, "Red" != game.getWinner());
+
+		}
+	}
+
+	@Test
+	public void testAssassinRevealedByBlue() {
+		Board b = new Board();
+		Game game = new Game();
+		Location[][] arr = b.getLocations();
+		
+		for (int i = 0; i < 5; i++) {
+			for (int n = 0; n < 5; n++) {
+				Location loc = arr[i][n];
+				if (loc.getPerson().getAgentType() == 2) { // if location is visible and it's an assassin.
+					loc.setVisible(true);
+				}
+			}
+			game.setTurn(1); // set turn to Blue
+
+			assertEquals(
+					"The game determined the winner incorrectly. the winner shouldn't be the Blue Team who revealed the assassin",
+					true, "Blue" != game.getWinner());
+
+		}
+	}
 
 }
