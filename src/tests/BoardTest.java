@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertFalse;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -33,7 +32,6 @@ public class BoardTest {
 				assertEquals("The location is undefined", true, loc != null);
 			}
 		}
-
 	}
 
 	@Test
@@ -52,15 +50,40 @@ public class BoardTest {
 
 	@Test
 	public void distinctCodeNames() {
-		
 		Board n = new Board();
 		n.setFile("./lists/GameWords2.txt");
 		ArrayList<String> act = new ArrayList<String>(n.selectRandomCodeNames());
 		ArrayList<String> codeNames = new ArrayList<String>(b.selectRandomCodeNames());
 		assertEquals("Somewhere is your randomizer you screwed up", 25, codeNames.size());
 		assertFalse("Check your randomizer, Im not sure if it is functioning properly.", act.equals(codeNames));
-
 	}
 
+	@Test
+	public void createAgentTypeListTest() {
+		// checks for the available roles and the number of roles
+		//
+		int iB = 0;
+		int bl = 0;
+		int r = 0;
+		int a = 0;
+		ArrayList<Integer> agents = new ArrayList<Integer>(b.createAgentTypeList());
+		for (int i = 0; i < agents.size(); i++) {
+			int p = agents.get(i);
+			if (p == 0) {
+				bl++;
+			} else if (p == 1) {
+				r++;
+			} else if (p == 2) {
+				a++;
+			} else {
+				iB++;
+			}
+		}
+		assertEquals("Check your Innocent Bystanders", 7, iB);
+		assertEquals("Check your Red Team Comp", 8, bl);
+		assertEquals("Check your Blue Team Comp", 9, r);
+		assertEquals("Check your Assasin assignment", 1, a);
+
+	}
 
 }
