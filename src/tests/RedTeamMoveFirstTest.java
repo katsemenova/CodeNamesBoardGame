@@ -39,17 +39,7 @@ public class RedTeamMoveFirstTest {
 		}
 		assertEquals("The are not 25 locations initialized",25,index);
 	}
-	
-//		Location a=new Location(0, 0, null);
-//		int person = 0;
-	//	boolean hidden = true; /*true means not revealed, false means revealed */
-	//	for(int i=0;i<b.locations.length;i++){/*for 25 instances */
-	//		b.locations.getAgentName();
-	//	}
-		
-//		assertEquals("AFRICA",a.getAgentName());
-	//	assertEquals(0,a.getAgentType());
-	//	assertTrue(hidden,a.isVisible());
-//	}
+
+
 
 }
