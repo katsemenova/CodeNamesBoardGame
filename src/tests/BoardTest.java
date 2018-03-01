@@ -60,8 +60,6 @@ public class BoardTest {
 
 	@Test
 	public void createAgentTypeListTest() {
-		// checks for the available roles and the number of roles
-		//
 		int iB = 0;
 		int bl = 0;
 		int r = 0;
@@ -83,7 +81,5 @@ public class BoardTest {
 		assertEquals("Check your Red Team Comp", 8, bl);
 		assertEquals("Check your Blue Team Comp", 9, r);
 		assertEquals("Check your Assasin assignment", 1, a);
-
 	}
-
 }

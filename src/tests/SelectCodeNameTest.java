@@ -10,6 +10,7 @@ import code.Location;
 
 public class SelectCodeNameTest {
 	
+	//@Author Kat
 	
 	@Test
 	public void selectCodeNameDecrementCountTest(){
