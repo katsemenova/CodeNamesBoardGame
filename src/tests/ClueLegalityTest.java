@@ -32,7 +32,6 @@ public class ClueLegalityTest {
 	@Test
 	public void legalClueVisibleNameTest(){
 		Board b = new Board();
-		List<String> agentNames = b.getCodenamesUsed();
 		b.getLocations()[1][1].setVisible(true);
 		String testName = b.getLocations()[1][1].getPerson().getAgentName();
 		assertEquals(true,b.legalClue(testName));
