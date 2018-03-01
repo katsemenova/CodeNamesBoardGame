@@ -106,4 +106,21 @@ public class AgentsTest {
 		assertEquals(7,byCount);
 	}
 
+	@Test
+	public void testRandomAssigning(){
+		Board b = new Board();
+		Location[][] theLocationsOne = b.getLocations();
+		b.assignLocations();
+		Location[][] theLocationsTwo = b.getLocations();
+		boolean notTheSame = false;
+		
+		for(int i = 0; i < 5; i++){
+			for(int j = 0; j < 5; j++){
+				if(theLocationsOne[i][j].getPerson().getAgentType()!=
+						theLocationsTwo[i][j].getPerson().getAgentType())
+					notTheSame = true;
+			}
+		}
+		assertEquals("The agents are not randomly assigned, the boards are the same", true, notTheSame);
+	}
 	}
