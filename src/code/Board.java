@@ -47,10 +47,11 @@ public class Board {
 	
 
 	/**
+	   * This method reads through a file of code names and adds them all
+	   * to an ArrayList of type String, which is then returned.
 	   * 
-	   * 
-	   * @param 
-	   * @return 
+	   * @param none
+	   * @return ArrayList containing all the code names in a file as Strings
 	   */
 	public List<String> readCodeNamesFromFile() {
 		List<String> codenames = new ArrayList<String>();
@@ -64,10 +65,12 @@ public class Board {
 		return codenames;
 	}
 	/**
+	   * This method shuffles the ArrayList returned by readCodeNamesFromFile
+	   * selects the first 25 code names from that ArrayList and returns a new
+	   * ArrayList containing the selected code names. 
 	   * 
-	   * 
-	   * @param 
-	   * @return 
+	   * @param none
+	   * @return ArrayList containing 25 random code names as Strings
 	   */
 	public List<String> selectRandomCodeNames() {
 		List<String> newCodenames = new ArrayList<String>();
@@ -79,10 +82,16 @@ public class Board {
 		return newCodenames;
 	}
 	/**
+	   * This method creates an ArrayList of integers that represent agent types,
+	   * shuffles them, and returns the shuffled ArrayList.
 	   * 
+	   * 0 = Blue agents
+	   * 1 = Red agents
+	   * 2 = Assassin
+	   * 3 = Bystanders
 	   * 
-	   * @param 
-	   * @return 
+	   * @param none
+	   * @return shuffled ArrayList of Integer representing agent types
 	   */
 	public List<Integer> createAgentTypeList() {
 		List<Integer> agentTypes = new ArrayList<Integer>();
@@ -92,10 +101,12 @@ public class Board {
 		return agentTypes;
 	}
 	/**
+	   * This method creates a new ArrayList of type Person by instantiating
+	   * 25 new Person instances and passing their appropriate parameters from
+	   * the selectRandomCodeNames and createAgentTypeList methods.
 	   * 
-	   * 
-	   * @param 
-	   * @return 
+	   * @param none
+	   * @return ArrayList of type Person that holds all Person assignments
 	   */
 	public List<Person> assignPerson() {
 		List<Integer> agentTypes = createAgentTypeList();
@@ -107,10 +118,12 @@ public class Board {
 		return assignments;
 	}
 	/**
+	   * This method creates a new 2D array of type Location and fills the array with new Location
+	   * instances that are created by cycling over an ArrayList of type Person and assigning (X,Y)
+	   * coordinates that coincide with the instance's position in the 2D array.
 	   * 
-	   * 
-	   * @param 
-	   * @return 
+	   * @param none
+	   * @return none
 	   */
 	public void assignLocations() {
 		locations = new Location[5][5];
