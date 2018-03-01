@@ -16,7 +16,8 @@ public class AgentsTest {
 	// Third, make instance of Board, keep track of number of red, blue, assassins,
 	// bystanders
 
-	// @Author Hollis Pauquette, Aaron Kong
+	// @Author Hollis Pauquette, 
+	// @author Aaron Kong
 	
 	private Board b = new Board();
 
@@ -25,12 +26,12 @@ public class AgentsTest {
 		Location[][] theLocations = b.getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
-				assertTrue(theLocations[i][j].getPerson().getAgentName() != null);
-				assertTrue(theLocations[i][j].getPerson().getAgentType() != null
+				assertTrue("The agent codename is not set",theLocations[i][j].getPerson().getAgentName() != null);
+				assertTrue("Agents aren't assigned a correct bound for the agentType field",theLocations[i][j].getPerson().getAgentType() != null
 						&& theLocations[i][j].getPerson().getAgentType() <= 3);
-				assertTrue(theLocations[i][j].getPerson().getAgentType() != null
+				assertTrue("Agents aren't assigned a correct bound for the agentType field",theLocations[i][j].getPerson().getAgentType() != null
 						&& theLocations[i][j].getPerson().getAgentType() >= 0);
-				assertTrue(theLocations[i][j] != null);
+				assertTrue("The location instance is not defined",theLocations[i][j] != null);
 			}
 		}
 
@@ -48,7 +49,7 @@ public class AgentsTest {
 
 			}
 		}
-		assertEquals(9, rCount);
+		assertEquals("There is an incorrect number of red agents",9, rCount);
 	}
 
 	@Test
@@ -63,7 +64,7 @@ public class AgentsTest {
 
 			}
 		}
-		assertEquals(8, bCount);
+		assertEquals("There is an incorrect number of blue agents",8, bCount);
 	}
 
 	@Test
@@ -78,7 +79,7 @@ public class AgentsTest {
 
 			}
 		}
-		assertEquals(1, aCount);
+		assertEquals("There is an incorrect number of assassins",1, aCount);
 	}
 
 	@Test
@@ -93,7 +94,7 @@ public class AgentsTest {
 
 			}
 		}
-		assertEquals(7, byCount);
+		assertEquals("There is an incorrect number of bystanders",7, byCount);
 	}
 
 	@Test
