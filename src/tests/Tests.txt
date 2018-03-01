@@ -153,11 +153,13 @@ WinningStateTest.Java
         testAssassinRevealedByRed() -
 			This method tests to make sure Blue team wins after an assassin is revealed. 
 			The method does this by finding the assassin on the board and setting making 
-			it visible. It then sets the game’s turn to the Red team and tests whether the 
-			Blue team won.
+			it visible. It then sets the game’s turn to the Red team. And calls the 
+			checkWinningState() method, so it sets the winner properly. and tests whether 
+			the Blue team won.
 		testAssassinRevealedByBlue() -
 			This method tests to make sure Red team wins after an assassin is revealed. 
 			The method does this by finding the assassin on the board and setting making 
-			it visible. It then sets the game’s turn to the Blue team and tests whether the 
+			it visible. It then sets the game’s turn to the Blue team. And calls the 
+			checkWinningState() method, so it sets the winner properly. and tests whether the 
 			Red team won.
 

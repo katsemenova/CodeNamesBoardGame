@@ -107,7 +107,7 @@ public class WinningStateTest {
 				}
 			}
 			game.setTurn(1); // set turn to Red
-
+			b.checkWinningState();
 			assertEquals(
 					"The game determined the winner incorrectly. the winner shouldn't be the Red Team who revealed the assassin",
 					true, "Red" != game.getWinner());
@@ -128,8 +128,8 @@ public class WinningStateTest {
 					loc.setVisible(true);
 				}
 			}
-			game.setTurn(1); // set turn to Blue
-
+			game.setTurn(0); // set turn to Blue
+			b.checkWinningState();
 			assertEquals(
 					"The game determined the winner incorrectly. the winner shouldn't be the Blue Team who revealed the assassin",
 					true, "Blue" != game.getWinner());
