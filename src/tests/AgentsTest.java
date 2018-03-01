@@ -17,10 +17,11 @@ public class AgentsTest {
 	// bystanders
 
 	// @Author Hollis Pauquette, Aaron Kong
+	
+	private Board b = new Board();
 
 	@Test
 	public void testPersonsForNull() {
-		Board b = new Board();
 		Location[][] theLocations = b.getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
@@ -38,7 +39,6 @@ public class AgentsTest {
 	@Test
 	public void testRedAgents() {
 		int rCount = 0;
-		Board b = new Board();
 		Location[][] theLocations = b.getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
@@ -54,7 +54,6 @@ public class AgentsTest {
 	@Test
 	public void testBlueAgents() {
 		int bCount = 0;
-		Board b = new Board();
 		Location[][] theLocations = b.getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
@@ -70,7 +69,6 @@ public class AgentsTest {
 	@Test
 	public void testAssassins() {
 		int aCount = 0;
-		Board b = new Board();
 		Location[][] theLocations = b.getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
@@ -86,7 +84,6 @@ public class AgentsTest {
 	@Test
 	public void testBystanders() {
 		int byCount = 0;
-		Board b = new Board();
 		Location[][] theLocations = b.getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
