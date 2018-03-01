@@ -46,7 +46,12 @@ public class Board {
 	}
 	
 
-
+	/**
+	   * 
+	   * 
+	   * @param 
+	   * @return 
+	   */
 	public List<String> readCodeNamesFromFile() {
 		List<String> codenames = new ArrayList<String>();
 		try {
@@ -58,7 +63,12 @@ public class Board {
 		}
 		return codenames;
 	}
-
+	/**
+	   * 
+	   * 
+	   * @param 
+	   * @return 
+	   */
 	public List<String> selectRandomCodeNames() {
 		List<String> newCodenames = new ArrayList<String>();
 		List<String> codenames = readCodeNamesFromFile();
@@ -68,7 +78,12 @@ public class Board {
 		}
 		return newCodenames;
 	}
-
+	/**
+	   * 
+	   * 
+	   * @param 
+	   * @return 
+	   */
 	public List<Integer> createAgentTypeList() {
 		List<Integer> agentTypes = new ArrayList<Integer>();
 		Integer[] otherList = new Integer[] {0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,2,3,3,3,3,3,3,3};
@@ -76,7 +91,12 @@ public class Board {
 		Collections.shuffle(agentTypes);
 		return agentTypes;
 	}
-
+	/**
+	   * 
+	   * 
+	   * @param 
+	   * @return 
+	   */
 	public List<Person> assignPerson() {
 		List<Integer> agentTypes = createAgentTypeList();
 		codenames = selectRandomCodeNames();
@@ -86,7 +106,12 @@ public class Board {
 		}
 		return assignments;
 	}
-	
+	/**
+	   * 
+	   * 
+	   * @param 
+	   * @return 
+	   */
 	public void assignLocations() {
 		locations = new Location[5][5];
 		List<Person> people = assignPerson();
@@ -122,12 +147,23 @@ public class Board {
 		return true;
 	}
 	
-	
+	/**
+	   * 
+	   * 
+	   * @param 
+	   * @return 
+	   */
 	public boolean checkWinningState() {
 		return allAgentsRevealed() || checkForAssassin();
 	}
+	/**
+	   * 
+	   * 
+	   * @param 
+	   * @return 
+	   */
 	public boolean checkForAssassin() {
-				// checks for assassin
+				
 		boolean assassinRevealed = false;
 		for(int i = 0;i<locations.length;i++){
 			for(int j = 0; j <locations[0].length;j++){
@@ -148,6 +184,12 @@ public class Board {
 						}
 						return false;
 		 	}
+	/**
+	   * 
+	   * 
+	   * @param 
+	   * @return 
+	   */
 	public boolean allAgentsRevealed() {
  		int countRed = 0;
  		int countBlue = 0;
@@ -175,7 +217,12 @@ public class Board {
 		
  		return false;
 	}
-
+	/**
+	   * 
+	   * 
+	   * @param 
+	   * @return 
+	   */
 	public boolean selectCodeName(String codeName) {
 		cardCount--;
 		int personRevealed = 5;
@@ -197,23 +244,49 @@ public class Board {
 		return false;
 
 	}
-
+	/**
+	   * 
+	   * 
+	   * @param 
+	   * @return 
+	   */
 	public List<String> getCodenamesUsed() {
 		return codenames;
 	}
 	
-	
+	/**
+	   * 
+	   * 
+	   * @param 
+	   * @return 
+	   */
 	public int getCount(){
 		return cardCount;
 	}
+	/**
+	   * 
+	   * 
+	   * @param 
+	   * @return 
+	   */
 	public String getFile() {
 		return file;
 	}
-
+	/**
+	   * 
+	   * 
+	   * @param 
+	   * @return 
+	   */
 	public void setFile(String filename) {
 		file = filename;
 	}
-	
+	/**
+	   * 
+	   * 
+	   * @param 
+	   * @return 
+	   */
 	public Location[][] getLocations() {
 		return locations;
 	}
