@@ -43,8 +43,8 @@ public class Game {
 	
 	
 	public void setTurn(int turn){
-		if(turn == 0 || turn ==1)
-			this.turn = turn;
+		if(turn == BLUE || turn == RED)
+			Game.turn = turn;
 	}
 	
 	public static void setWinner(String win){

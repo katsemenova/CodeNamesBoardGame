@@ -76,7 +76,7 @@ public class SelectCodeNameTest {
 			}
 		}
 		
-		int turn = game.getTurn(); //1 = red, 0 = blue
+		int turn = Game.getTurn(); //1 = red, 0 = blue
 		
 		if(turn == 1){
 			assertEquals("It was red's turn, and they selected their own agent",

@@ -2,7 +2,7 @@
         testPersonsForNull() - 
 			This test ensures that there are no null Location instances in the 2D array by 
 			testing every spot in the array for null.The test also ensures that every Person 
-			was instatited correctly by testing that every agent name is not null and by 
+			was instantiated correctly by testing that every agent name is not null and by 
 			ensuring that the agent type integers are not null and are within the bounds for 
 			an agent type (0-3). 0 = Blue, 1 = red, 2 = assassin, 3 = bystander
         testRedAgents() - 
@@ -44,11 +44,11 @@ BoardTest.Java - this class has one private variable of the
 			This test method ensures that our program successfully reads a file, and 
 			inputs the elements into a list. The test sets the file to a test file with 
 			fewer elements and calls the reader method from the Board class to put the 
-			elements in an ArrayList. The Arraylist containing the method return is sanity 
+			elements in an ArrayList. The ArrayList containing the method return is sanity 
 			checked against the manually entered ArrayList.
 		distinctCodeNames() - 
 			Tests randomization of the codenames. By first creating 2 separate instances 
-			of a board, we can store the codenames in Arraylists and check equality with .equals().
+			of a board, we can store the codenames in ArrayLists and check equality with .equals().
         createAgentTypeListTest() -
 			Tests the list of agents for 25 Person objects. A list of agent types is 
 			returned from the Board, and stored in an ArrayList. A loop iterates through
@@ -79,7 +79,7 @@ RedTeamMoveFirstTest.Java
         boardLocationsCreatedCorrectlyTest() -
 			This test ensures that the creation of 25 location instances are created correctly 
 			and they are not revealed. These are all done in the for loops. Then if location 
-			does not equal to null. So index which is a int instance that is created before 
+			does not equal to null. So index which is an int instance that is created before 
 			the for loop increases. Then the test ensures that locations are not visible when 
 			location equals to false; person is true when it is not null for the location; 
 			also, codename is not null so that each location can successfully assign a codename. 
@@ -94,7 +94,7 @@ SelectCodeNameTest.java
 			to be revealed the count shouldn’t be decremented. 
 		selectCodeNameNullTest() - 
 			This test ensues that when a codeName is passed that is null the count isn’t decremented 
-			and an exception is thrown, showing you can’t pass null as a paramater to the 
+			and an exception is thrown, showing you can’t pass null as a parameter to the 
 			selectCodeName() method. 
 		selectCodeNameUpdateLocationTest() - 
 			This test ensures that when a codename of a location was selected, that location’s
@@ -139,7 +139,7 @@ WinningStateTest.Java
 			all of the blue team’s agents are revealed (8 blue agents). After creating an 
 			instance of the game class. This method creates references to the board and 
 			the 2d array of locations on the board. Then it loops through all the locations 
-			and sets the blue agents to visible = true (aka “Revealed”). The assertEquals 
+			and sets the blue agents to visible = true (A.K.A. “Revealed”). The assertEquals 
 			test that board.allAgentsRevealed() method returns true, correctly determining 
 			that the game is in a winning state.
         allAgentsRevealedTestRedWinner() - 
@@ -147,7 +147,7 @@ WinningStateTest.Java
 			all of the red team’s agents are revealed (9 red agents). After creating an 
 			instance of the game class. This method creates references to the board and the 
 			2d array of locations on the board. Then it loops through all the locations and 
-			sets the red agents to be visible (aka “Revealed”). The assertEquals test that 
+			sets the red agents to be visible (A.K.A. “Revealed”). The assertEquals test that 
 			board.allAgentsRevealed() method returns true, correctly determining that the 
 			game is in a winning state.
         testAssassinRevealedByRed() -

@@ -9,13 +9,11 @@ import org.junit.Test;
 import code.Board;
 import code.Game;
 import code.Location;
-import code.Person;
 
 public class RedTeamMoveFirstTest {
 	@Test
-	public void redMoveFirst(){
-		Game game = new Game(); 
-		assertEquals("Red team moves first.",1,game.getTurn());
+	public void redMoveFirst(){ 
+		assertEquals("Red team moves first.",1,Game.getTurn());
 		
 	}
 	@Test
