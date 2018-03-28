@@ -19,13 +19,15 @@ public class Game {
 	/*
 	 * final constants, to define who's turn is when, done for better readability
 	 */
-	private final static int RED = 1; private final static int BLUE = 0;
+	private final static int BLUE = 0; private final static int RED = 1; 
 	
 	/*
 	 * Constructor that runs the main method when board is created
 	 */
 	public Game(){
-		main(null);
+		setBoard(new Board());
+		turn = RED;
+		winner = "";
 	}
 	
 	/**
@@ -34,19 +36,18 @@ public class Game {
 	   * @param String[] args
 	   * @return none
 	   */
-	public static void main(String[] args){
-		setBoard(new Board());
-		turn = RED;
-		winner = "";
-		
-	}
+
 	
 	
 	public void setTurn(int turn){
 		if(turn == BLUE || turn == RED)
 			Game.turn = turn;
 	}
-	
+	public String getTurnString(){
+		if(turn == BLUE)
+			return "Blue";
+		else return "Red";
+	}
 	public static void setWinner(String win){
 		winner = win;
 	}
@@ -56,15 +57,18 @@ public class Game {
 	public static int getTurn(){
 		return turn;
 	}
-
+	
 	public Board getBoard() {
 		return board;
 	}
 
 	public static void setBoard(Board board) {
 		Game.board = board;
+	}  
+	/*
+	 * has to be changed to actual logic this is for look purposes
+	 */
+	public String spymasterPlaying(){
+		return "Spymaster";
 	}
-	
-	
-	
 }
