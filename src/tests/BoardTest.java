@@ -36,7 +36,7 @@ public class BoardTest {
 
 	@Test
 	public void readCodeNamesFromFileTest() {
-		b.setFile("./lists/GameWords2.txt");
+		b.setFile("./testfiles/codenames.txt");
 		ArrayList<String> code = new ArrayList<String>(b.readCodeNamesFromFile());
 		ArrayList<String> act = new ArrayList<String>();
 		Collections.addAll(act, "area", "book", "business", "case", "child", "company", "country", "day", "eye", "fact",
@@ -51,7 +51,7 @@ public class BoardTest {
 	@Test
 	public void distinctCodeNames() {
 		Board n = new Board();
-		n.setFile("./lists/GameWords2.txt");
+		n.setFile("./testfiles/codenames.txt");
 		ArrayList<String> act = new ArrayList<String>(n.selectRandomCodeNames());
 		ArrayList<String> codeNames = new ArrayList<String>(b.selectRandomCodeNames());
 		assertEquals("Somewhere is your randomizer you screwed up", 25, codeNames.size());
