@@ -1,19 +1,27 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.plaf.ButtonUI;
+import javax.swing.plaf.basic.BasicButtonUI;
 
 import code.Game;
 import code.Location;
@@ -32,6 +40,11 @@ public class GUI implements Observer{
 	private Driver _windowHolder;
 	
 	public GUI(Game g, JPanel mp, Driver driver) {
+		try {
+		    UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
+		 } catch (Exception e) {
+		           e.printStackTrace();
+		 }
 		_windowHolder = driver;
 		_game = g;
 		
@@ -62,9 +75,6 @@ public class GUI implements Observer{
 		createCards();
 		updateFeedbackPanel();
 		updatePlayerActionPanel();
-		
-
-		
 		updateJFrameIfNotHeadless();
 	}
 
@@ -77,27 +87,72 @@ public class GUI implements Observer{
 		
 		for(int i = 0; i < 5; i++){
 			for(int j = 0; j < 5; j++){
+				String codeName = locations[i][j].getLocationCodename();
+				Location location = locations[i][j];
 				JButton b;
-				//the Jbutton can also have an additional paramater of an icon aka a pic
 				if(_game.getControl().equals("Spymaster"))
-					 b = new JButton("<html> "+locations[i][j].getPerson().getAgentTypeString()+"<br/><br/>" + locations[i][j].getLocationCodename()+"</html>");
+					 b = new JButton("<html> "+location.getPerson().getAgentTypeString().toUpperCase()+"<br/><br/>" + codeName+"</html>");
 				else
-					 b = new JButton(locations[i][j].getLocationCodename());
-				b.setBackground(Color.LIGHT_GRAY);
-				b.setPreferredSize(new Dimension(120,120));
+					 b = new JButton(codeName);
 				
-				/*
-				 * create action for button on click, remember action should differ based on if it is 
-				 * the turn of the spymaster or not - use _game.getControl() to find out if
-				 * "Spymaster" is returned or if "Players" is returned
-				 */
-			
 				_outputPanel.add(b);
+				b.setOpaque(true);
+				if(location.isVisible())
+					setColor(b, location.getPerson().getAgentTypeString());
+				else
+					b.setBackground(Color.LIGHT_GRAY);
+			    
+				b.setPreferredSize(new Dimension(120,120));
+				b.addActionListener(new ActionListener(){
+				
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						if(_game.getControl().equals("Spymaster")){
+						}else{
+							if(!location.isVisible()){
+								_game.getBoard().selectCodeName(codeName);
+								setColorUpdate(b, location.getPerson().getAgentTypeString());
+								System.out.println("color changed" + codeName);
+							}
+	
+						}
+					}
+					
+				});
+
+			
 			}
 		}
 	}
 	
+	private void setColorUpdate(JButton b, String agentType) {
+		if(agentType.equals("Red"))
+			b.setBackground(Color.red);
+		else if(agentType.equals("Blue"))
+			b.setBackground(Color.BLUE);
+		else if(agentType.equals("Bystander"))
+			b.setBackground(Color.yellow);
+		else if(agentType.equals("Assassin"))
+			b.setBackground(Color.DARK_GRAY);
+	
+		update();
+	}
+	
+	private void setColor(JButton b, String agentType) {
+		if(agentType.equals("Red"))
+			b.setBackground(Color.red);
+		else if(agentType.equals("Blue"))
+			b.setBackground(Color.BLUE);
+		else if(agentType.equals("Bystander"))
+			b.setBackground(Color.yellow);
+		else if(agentType.equals("Assassin"))
+			b.setBackground(Color.DARK_GRAY);
+		//System.out.println("agentType");
+		
+	}
+
 	private void updateFeedbackPanel() {
+		_feedBackPanel.removeAll();
 		Color col;
 		if(_game.getTurnString().equals("Blue"))
 			col = Color.blue;
@@ -119,7 +174,7 @@ public class GUI implements Observer{
 	}
 	
 	private void updatePlayerActionPanel() {
-
+		_playerPanel.removeAll();
 		
 		JLabel clueLabel  = new JLabel("Clue:");
 		clueLabel.setFont(new Font("Serif", Font.BOLD, 13));
