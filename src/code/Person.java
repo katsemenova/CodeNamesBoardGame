@@ -43,5 +43,16 @@ public class Person {
 	public Integer getAgentType() {
 		return agentType;
 	}
+	
+	public String getAgentTypeString(){
+		if(agentType == 0)
+			return "Blue";
+		else if(agentType == 1)
+			return "Red";
+		else if(agentType == 2)
+			return "Assassin";
+		else 
+			return "Bystander";
+	}
 
 }
