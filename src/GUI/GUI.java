@@ -90,12 +90,16 @@ public class GUI implements Observer{
 				
 				
 				
-				if(location.isVisible())
-					setColor(b, location.getPerson().getAgentTypeString());
+				if(location.isVisible()){
+					b.setText(location.getPerson().getAgentTypeString());
+					setColor(b, location.getPerson().getAgentTypeString().toUpperCase());
+					b.setForeground(Color.WHITE);
+				}
 				else
-					b.setBackground(Color.LIGHT_GRAY);
+					b.setBackground(new Color(234, 227, 234));
 			    
-				b.setPreferredSize(new Dimension(120,120));
+				b.setFont(new Font("Serif", Font.PLAIN, 15));
+				b.setPreferredSize(new Dimension(120,100));
 				b.addActionListener(new ActionListener(){
 				
 					@Override
@@ -166,27 +170,19 @@ public class GUI implements Observer{
 
 	}
 	private void setColorUpdate(JButton b, String agentType) {
-		if(agentType.equals("Red"))
-			b.setBackground(Color.red);
-		else if(agentType.equals("Blue"))
-			b.setBackground(Color.BLUE);
-		else if(agentType.equals("Bystander"))
-			b.setBackground(Color.yellow);
-		else if(agentType.equals("Assassin"))
-			b.setBackground(Color.DARK_GRAY);
-	
+		setColor(b,agentType);
 		update();
 	}
 	
 	private void setColor(JButton b, String agentType) {
 		if(agentType.equals("Red"))
-			b.setBackground(Color.red);
+			b.setBackground(new Color(236, 87, 107));
 		else if(agentType.equals("Blue"))
-			b.setBackground(Color.BLUE);
+			b.setBackground(new Color(78, 197, 193));
 		else if(agentType.equals("Bystander"))
-			b.setBackground(Color.yellow);
+			b.setBackground(new Color(229, 227, 56));
 		else if(agentType.equals("Assassin"))
-			b.setBackground(Color.DARK_GRAY);
+			b.setBackground(new Color(0, 0, 0));
 	
 	}
 
@@ -289,6 +285,22 @@ public class GUI implements Observer{
 			countLabel.setFont(new Font("Serif", Font.BOLD, 20));
 			countLabel.setBorder(new EmptyBorder(5, 20, 5, 20));
 			_playerPanel.add(countLabel);
+			
+			JButton endTurn = new JButton("End Turn");
+			endTurn.setBackground(Color.LIGHT_GRAY);
+			endTurn.setPreferredSize(new Dimension(50,30));
+			endTurn.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					_game.changeControl();
+					_game.switchTeamTurn();
+					
+					update();
+				}});
+				
+			_playerPanel.add(endTurn);
+			
 		}
 		
 		
