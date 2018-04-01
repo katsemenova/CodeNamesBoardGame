@@ -92,13 +92,12 @@ public class GUI implements Observer{
 				
 				if(location.isVisible()){
 					b.setText(location.getPerson().getAgentTypeString());
-					setColor(b, location.getPerson().getAgentTypeString().toUpperCase());
+					setColor(b, location.getPerson().getAgentTypeString());
 					b.setForeground(Color.WHITE);
 				}
 				else
 					b.setBackground(new Color(234, 227, 234));
 			    
-				b.setFont(new Font("Serif", Font.PLAIN, 15));
 				b.setPreferredSize(new Dimension(120,100));
 				b.addActionListener(new ActionListener(){
 				
