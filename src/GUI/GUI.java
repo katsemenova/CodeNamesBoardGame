@@ -284,7 +284,7 @@ public class GUI implements Observer{
 			clueLabel.setBorder(new EmptyBorder(5, 20, 5, 20));
 			_playerPanel.add(clueLabel);
 			
-			String textTwo = "Count: " + countForTurn;
+			String textTwo = "Current Count: " + countForTurn;
 			JLabel countLabel = new JLabel(textTwo);
 			countLabel.setFont(new Font("Serif", Font.BOLD, 20));
 			countLabel.setBorder(new EmptyBorder(5, 20, 5, 20));
