@@ -29,6 +29,7 @@ public class GUI implements Observer{
 	private JPanel _playerPanel;
 	private Game _game;
 	private Driver _windowHolder;
+	private String currentClue;
 	
 	public GUI(Game g, JPanel mp, Driver driver) {
 		try {
@@ -188,6 +189,8 @@ public class GUI implements Observer{
 			_playerPanel.add(enterButton);
 		}else{
 			_playerPanel.removeAll();
+//			String
+//			JLabel
 		}
 		
 	}
