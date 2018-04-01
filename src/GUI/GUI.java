@@ -103,8 +103,8 @@ public class GUI implements Observer{
 						if(_game.getControl().equals("Spymaster")){
 						}else{
 							if(!location.isVisible()){
-								_game.getBoard().selectCodeName(codeName);
-								decrementCount();
+								boolean result = _game.getBoard().selectCodeName(codeName);
+								decrementCount(result);
 								setColorUpdate(b, location.getPerson().getAgentTypeString());
 								checkWinningState();
 								}
@@ -122,8 +122,9 @@ public class GUI implements Observer{
 		}
 	}
 
-	private void checkWinningState() {
+	private boolean checkWinningState() {
 		if(_game.getBoard().checkWinningState()){
+	
 			System.out.println("Winner is");
 			if(_game.getBoard().checkForAssassin()){
 				System.out.println("due to assassin");
@@ -136,6 +137,7 @@ public class GUI implements Observer{
 				 * 
 				 */
 			}else{
+				
 				/*
 				 * 
 				 * @Sydney @Hollis
@@ -144,14 +146,24 @@ public class GUI implements Observer{
 				 * 
 				 * 
 				 */
+				
 			}
+			return true;
 		}
+		return false;
 	}
-	private void decrementCount() {
+	private void decrementCount(boolean result) {
 		countForTurn--;
-		if(countForTurn<=0){
+		if(!_game.getBoard().legalCount(countForTurn) && result == true){
+			_game.changeControl();
+			_game.switchTeamTurn();
 			update();
 		}
+		if(!_game.getBoard().legalCount(countForTurn) && result == false){
+			
+			update();
+		}
+
 	}
 	private void setColorUpdate(JButton b, String agentType) {
 		if(agentType.equals("Red"))
@@ -197,12 +209,18 @@ public class GUI implements Observer{
 		labelSpymasterOrNot.setForeground(col);
 		labelSpymasterOrNot.setBorder(new EmptyBorder(5, 20, 5, 20));
 		_feedBackPanel.add(labelSpymasterOrNot);
+		if(checkWinningState()){
+			_feedBackPanel.removeAll();
+
+		}
 	}
 	
 	private void updatePlayerActionPanel() {
-		System.out.println("player panel updated");
-		 
-		if(_game.getControl().equals("Spymaster")){
+		if(checkWinningState()){
+			_playerPanel.removeAll();
+		
+			
+		}else if(_game.getControl().equals("Spymaster")){
 			_playerPanel.removeAll();
 			
 			JLabel clueLabel  = new JLabel("Clue:");
@@ -258,7 +276,7 @@ public class GUI implements Observer{
 				
 			});
 			_playerPanel.add(enterButton);
-		}else{
+		}else if(_game.getControl().equals("Players")){
 			_playerPanel.removeAll();
 			String textOne = "Clue: " + currentClue;
 			JLabel clueLabel = new JLabel(textOne);
