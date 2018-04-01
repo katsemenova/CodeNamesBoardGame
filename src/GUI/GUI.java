@@ -61,8 +61,7 @@ public class GUI implements Observer{
 		_playerPanel = new JPanel();
 		_playerPanel.setLayout(new BoxLayout(_playerPanel, BoxLayout.Y_AXIS));
 		_inputPanel.add(_playerPanel);
-		currentClue = "Hello";
-		countForTurn = 5;
+
 		update();
 	}
 
@@ -152,9 +151,10 @@ public class GUI implements Observer{
 	private void decrementCount() {
 		countForTurn--;
 		if(countForTurn<=0){
-			_game.switchTeamTurn();
+			//_game.switchTeamTurn();
 			_game.changeControl();
-			countForTurn=4;
+			
+			update();
 		}
 	}
 	private void setColorUpdate(JButton b, String agentType) {
@@ -213,21 +213,7 @@ public class GUI implements Observer{
 			_playerPanel.add(clueLabel);
 		
 			JTextField clueInput = new JTextField("input clue");
-			//makesureonly letters can be put in
 			clueInput.setSize( new Dimension(250,clueInput.getHeight()));
-			
-//			clueInput.addActionListener(new ActionListener(){
-//				@Override
-//				public void actionPerformed(ActionEvent e) {
-//					JTextField clueInput = (JTextField)e.getSource();
-//					String text = clueInput.getText();
-//					System.out.println("Clue entered " + text);
-//					}
-//				
-//				
-//			});
-
-			
 			_playerPanel.add(clueInput);
 		
 			JLabel countLabel  = new JLabel("Count:");
@@ -235,7 +221,6 @@ public class GUI implements Observer{
 			_playerPanel.add(countLabel);
 		
 			JTextField countInput = new JTextField("input count");
-			//makesureonly numbers can be put in
 			countInput.setSize( new Dimension(25,countInput.getHeight()));
 			_playerPanel.add(countInput);
 			
@@ -243,35 +228,35 @@ public class GUI implements Observer{
 			enterButton.setBackground(Color.LIGHT_GRAY);
 			enterButton.setPreferredSize(new Dimension(50,30));
 			enterButton.addActionListener(new ActionListener(){
-
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					
+					String count = countInput.getText();
 					currentClue = clueInput.getText();
-					countForTurn = Integer.parseInt(countInput.getText());
 					
-					if(_game.getBoard().legalClue(currentClue)){
-						if(_game.getBoard().legalCount(countForTurn)){
+					if(count.matches("[0-9]") && _game.getBoard().legalCount(Integer.parseInt(count))){
+						countForTurn = Integer.parseInt(count);
+						if(_game.getBoard().legalClue(currentClue)){
 							_game.changeControl();
-							System.out.println("works");
+							update();
+						
 						}else{
-							System.out.println("Count illegal");
+							System.out.println("Illegal Clue ");
+						
 							/*
 							 * 
-							 * pop up message stating the count is illegal
+							 * Hollis and Sidney (Put in pop up message stating illegal clue)
 							 * 
-							 */
-						}
-						
+						 	*/
+						}	
 					}else{
-						System.out.println("Illegal Clue ");
-						
+						System.out.println("Count illegal");
 						/*
 						 * 
-						 * Hollis and Sidney (Put in pop up message stating illegal clue)
+						 * pop up message stating the count is illegal
 						 * 
 						 */
 					}
+
 				}
 				
 			});

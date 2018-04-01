@@ -38,10 +38,16 @@ public class Game {
 	 * changes game from spymaster to players move of the team whos turn it is
 	 */
 	public void changeControl(){
-		if(control.equals("Spymaster"))
+		if(control.equals("Spymaster")){
 			control = "Players";
-		else
+			System.out.println("s->p");
+		}
+		else if(control.equals("Players")){
 			control = "Spymaster";
+			System.out.println("p->s");
+		}
+		
+		System.out.println("finished");
 	}
 	public static void switchTeamTurn(){
 		if(turn == BLUE)
