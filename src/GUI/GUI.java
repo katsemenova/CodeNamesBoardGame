@@ -30,6 +30,8 @@ public class GUI implements Observer{
 	private Game _game;
 	private Driver _windowHolder;
 	private String currentClue;
+	private int countForTurn;
+	
 	
 	public GUI(Game g, JPanel mp, Driver driver) {
 		try {

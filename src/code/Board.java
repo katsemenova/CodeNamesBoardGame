@@ -34,7 +34,6 @@ public class Board {
 	 */
 	private int cardCount;
 	
-	private int countForTurn;
 	
 	
 	/*
@@ -340,11 +339,5 @@ public class Board {
 		return locations;
 	}
 
-	public int getCountForTurn() {
-		return countForTurn;
-	}
 
-	public void setCountForTurn(int countForTurn) {
-		this.countForTurn = countForTurn;
-	}
 }
