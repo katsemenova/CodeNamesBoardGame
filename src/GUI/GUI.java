@@ -60,7 +60,8 @@ public class GUI implements Observer{
 		_playerPanel = new JPanel();
 		_playerPanel.setLayout(new BoxLayout(_playerPanel, BoxLayout.Y_AXIS));
 		_inputPanel.add(_playerPanel);
-		
+		currentClue = "Hello";
+		countForTurn = 5;
 		update();
 	}
 
@@ -87,8 +88,8 @@ public class GUI implements Observer{
 				else
 					 b = new JButton(codeName);
 				
-				_outputPanel.add(b);
-				b.setOpaque(true);
+				
+				
 				if(location.isVisible())
 					setColor(b, location.getPerson().getAgentTypeString());
 				else
@@ -101,21 +102,60 @@ public class GUI implements Observer{
 					public void actionPerformed(ActionEvent e) {
 						if(_game.getControl().equals("Spymaster")){
 						}else{
+							
 							if(!location.isVisible()){
 								_game.getBoard().selectCodeName(codeName);
+								decrementCount();
 								setColorUpdate(b, location.getPerson().getAgentTypeString());
+								checkWinningState();
 								}
-	
 						}
 					}
+
+
 					
 				});
+				
+				_outputPanel.add(b);
 
 			
 			}
 		}
 	}
-	
+
+	private void checkWinningState() {
+		if(_game.getBoard().checkWinningState()){
+			System.out.println("Winner is");
+			if(_game.getBoard().checkForAssassin()){
+				System.out.println("due to assassin");
+				/*
+				 * 
+				 * @Sidney @Hollis
+				 * put in the pop textbox here stating ___ team won cause the other team revealed assassin
+				 * 
+				 * you can get the winner by calling a method in game class
+				 * 
+				 */
+			}else{
+				/*
+				 * 
+				 * @Sydney @Hollis
+				 * put in the pop textbox here stating ___ team won cause they revealed all agents
+				 * 
+				 * 
+				 * 
+				 */
+			}
+		}
+	}
+	private void decrementCount() {
+		countForTurn--;
+		if(countForTurn<=0){
+			_game.switchTeamTurn();
+			_game.changeControl();
+			countForTurn=4;
+		}
+	}
 	private void setColorUpdate(JButton b, String agentType) {
 		if(agentType.equals("Red"))
 			b.setBackground(Color.red);
@@ -191,8 +231,17 @@ public class GUI implements Observer{
 			_playerPanel.add(enterButton);
 		}else{
 			_playerPanel.removeAll();
-//			String
-//			JLabel
+			String textOne = "Clue: " + currentClue;
+			JLabel clueLabel = new JLabel(textOne);
+			clueLabel.setFont(new Font("Serif", Font.BOLD, 20));
+			clueLabel.setBorder(new EmptyBorder(5, 20, 5, 20));
+			_playerPanel.add(clueLabel);
+			
+			String textTwo = "Count: " + countForTurn;
+			JLabel countLabel = new JLabel(textTwo);
+			countLabel.setFont(new Font("Serif", Font.BOLD, 20));
+			countLabel.setBorder(new EmptyBorder(5, 20, 5, 20));
+			_playerPanel.add(countLabel);
 		}
 		
 	}

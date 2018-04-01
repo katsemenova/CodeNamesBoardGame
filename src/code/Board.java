@@ -335,6 +335,7 @@ public class Board {
 	 * 
 	 * @return 2d array of Location instances, that store the agents
 	 */
+	
 	public Location[][] getLocations() {
 		return locations;
 	}
