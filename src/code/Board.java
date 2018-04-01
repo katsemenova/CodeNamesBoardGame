@@ -33,11 +33,14 @@ public class Board {
 	 * Int to keep count of locations that are not visible yet
 	 */
 	private int cardCount;
-
+	
+	private int countForTurn;
+	
 	/*
 	 * Constructor to create the board, set up count, assign the fileName, and call
 	 * the method that generates random codename and agent assignments to locations
 	 */
+	
 	public Board() {
 		locations = new Location[5][5];
 		cardCount = 25;
@@ -334,5 +337,13 @@ public class Board {
 	 */
 	public Location[][] getLocations() {
 		return locations;
+	}
+
+	public int getCountForTurn() {
+		return countForTurn;
+	}
+
+	public void setCountForTurn(int countForTurn) {
+		this.countForTurn = countForTurn;
 	}
 }

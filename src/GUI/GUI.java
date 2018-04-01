@@ -160,9 +160,10 @@ public class GUI implements Observer{
 	}
 	
 	private void updatePlayerActionPanel() {
-		_playerPanel.removeAll();
+		
 		 
-		//if(){
+		if(_game.getControl().equals("Spymaster")){
+			_playerPanel.removeAll();
 		JLabel clueLabel  = new JLabel("Clue:");
 			clueLabel.setFont(new Font("Serif", Font.BOLD, 13));
 			_playerPanel.add(clueLabel);
@@ -180,12 +181,14 @@ public class GUI implements Observer{
 			//makesureonly numbers can be put in
 			countInput.setSize( new Dimension(25,countInput.getHeight()));
 			_playerPanel.add(countInput);
-		
+			
 			JButton enterButton = new JButton("Enter");
 			enterButton.setBackground(Color.LIGHT_GRAY);
 			enterButton.setPreferredSize(new Dimension(50,30));
 			_playerPanel.add(enterButton);
-		//}
+		}else{
+			_playerPanel.removeAll();
+		}
 		
 	}
 
