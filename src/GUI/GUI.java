@@ -1,37 +1,25 @@
 package GUI;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.plaf.ButtonUI;
-import javax.swing.plaf.basic.BasicButtonUI;
-
 import code.Game;
 import code.Location;
 
 /* 
  * @author Kateryna Semenova
  * @author Sidney Bloch
+ * @author Aaron Kong
  */
 public class GUI implements Observer{
 
@@ -113,8 +101,7 @@ public class GUI implements Observer{
 							if(!location.isVisible()){
 								_game.getBoard().selectCodeName(codeName);
 								setColorUpdate(b, location.getPerson().getAgentTypeString());
-								System.out.println("color changed" + codeName);
-							}
+								}
 	
 						}
 					}
@@ -148,8 +135,7 @@ public class GUI implements Observer{
 			b.setBackground(Color.yellow);
 		else if(agentType.equals("Assassin"))
 			b.setBackground(Color.DARK_GRAY);
-		//System.out.println("agentType");
-		
+	
 	}
 
 	private void updateFeedbackPanel() {
@@ -159,7 +145,6 @@ public class GUI implements Observer{
 			col = Color.blue;
 		else
 			col = Color.red;
-		
 		JLabel labelOfTeamPlaying  = new JLabel(_game.getTurnString()+" Team's Turn");
 		labelOfTeamPlaying.setForeground(col);
 		labelOfTeamPlaying.setFont(new Font("Serif", Font.BOLD, 20));
@@ -176,29 +161,31 @@ public class GUI implements Observer{
 	
 	private void updatePlayerActionPanel() {
 		_playerPanel.removeAll();
-		
+		 
+		//if(){
 		JLabel clueLabel  = new JLabel("Clue:");
-		clueLabel.setFont(new Font("Serif", Font.BOLD, 13));
-		_playerPanel.add(clueLabel);
+			clueLabel.setFont(new Font("Serif", Font.BOLD, 13));
+			_playerPanel.add(clueLabel);
 		
-		JTextField clueInput = new JTextField("input clue");
-		//makesureonly letters can be put in
-		clueInput.setSize( new Dimension(250,clueInput.getHeight()));
-		_playerPanel.add(clueInput);
+			JTextField clueInput = new JTextField("input clue");
+			//makesureonly letters can be put in
+			clueInput.setSize( new Dimension(250,clueInput.getHeight()));
+			_playerPanel.add(clueInput);
 		
-		JLabel countLabel  = new JLabel("Count:");
-		countLabel.setFont(new Font("Serif", Font.BOLD, 13));
-		_playerPanel.add(countLabel);
+			JLabel countLabel  = new JLabel("Count:");
+			countLabel.setFont(new Font("Serif", Font.BOLD, 13));
+			_playerPanel.add(countLabel);
 		
-		JTextField countInput = new JTextField("input count");
-		//makesureonly numbers can be put in
-		countInput.setSize( new Dimension(25,countInput.getHeight()));
-		_playerPanel.add(countInput);
+			JTextField countInput = new JTextField("input count");
+			//makesureonly numbers can be put in
+			countInput.setSize( new Dimension(25,countInput.getHeight()));
+			_playerPanel.add(countInput);
 		
-		JButton enterButton = new JButton("Enter");
-		enterButton.setBackground(Color.LIGHT_GRAY);
-		enterButton.setPreferredSize(new Dimension(50,30));
-		_playerPanel.add(enterButton);
+			JButton enterButton = new JButton("Enter");
+			enterButton.setBackground(Color.LIGHT_GRAY);
+			enterButton.setPreferredSize(new Dimension(50,30));
+			_playerPanel.add(enterButton);
+		//}
 		
 	}
 

@@ -286,7 +286,10 @@ public class Board {
 
 		if (personRevealed == Game.getTurn())
 			return true;
-		return false;
+		else{
+			Game.switchTeamTurn();
+			return false;
+		}
 
 	}
 

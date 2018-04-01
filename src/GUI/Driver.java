@@ -11,6 +11,12 @@ import javax.swing.SwingUtilities;
 
 import code.Game;
 
+/* 
+ * @author Kateryna Semenova
+ * @author Hollis Pauquette
+ * 
+ */
+
 public class Driver implements Runnable {
 
 	private Game _game;

@@ -43,9 +43,12 @@ public class Game {
 		else
 			control = "Spymaster";
 	}
-	public void setTurn(int turn){
-		if(turn == BLUE || turn == RED)
-			Game.turn = turn;
+	public static void switchTeamTurn(){
+		if(turn == BLUE)
+			Game.turn = RED;
+		else
+			Game.turn = BLUE;
+		
 	}
 	public String getTurnString(){
 		if(turn == BLUE)
