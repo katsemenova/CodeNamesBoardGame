@@ -291,6 +291,7 @@ public class Board {
 			return true;
 		else{
 			Game.switchTeamTurn();
+			Game.changeControl();
 			return false;
 		}
 

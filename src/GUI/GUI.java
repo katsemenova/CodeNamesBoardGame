@@ -102,7 +102,6 @@ public class GUI implements Observer{
 					public void actionPerformed(ActionEvent e) {
 						if(_game.getControl().equals("Spymaster")){
 						}else{
-							
 							if(!location.isVisible()){
 								_game.getBoard().selectCodeName(codeName);
 								decrementCount();
@@ -151,9 +150,6 @@ public class GUI implements Observer{
 	private void decrementCount() {
 		countForTurn--;
 		if(countForTurn<=0){
-			//_game.switchTeamTurn();
-			_game.changeControl();
-			
 			update();
 		}
 	}
@@ -204,11 +200,12 @@ public class GUI implements Observer{
 	}
 	
 	private void updatePlayerActionPanel() {
-		
+		System.out.println("player panel updated");
 		 
 		if(_game.getControl().equals("Spymaster")){
 			_playerPanel.removeAll();
-		JLabel clueLabel  = new JLabel("Clue:");
+			
+			JLabel clueLabel  = new JLabel("Clue:");
 			clueLabel.setFont(new Font("Serif", Font.BOLD, 13));
 			_playerPanel.add(clueLabel);
 		
