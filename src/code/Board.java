@@ -339,5 +339,13 @@ public class Board {
 		return locations;
 	}
 
+	public boolean legalCount(int countForTurn) {
+		if(countForTurn<=cardCount && countForTurn>0){
+			return true;
+		}
+		
+		return false;
+	}
+
 
 }

@@ -2,6 +2,7 @@ package GUI;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Event;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -174,6 +175,19 @@ public class GUI implements Observer{
 			JTextField clueInput = new JTextField("input clue");
 			//makesureonly letters can be put in
 			clueInput.setSize( new Dimension(250,clueInput.getHeight()));
+			
+//			clueInput.addActionListener(new ActionListener(){
+//				@Override
+//				public void actionPerformed(ActionEvent e) {
+//					JTextField clueInput = (JTextField)e.getSource();
+//					String text = clueInput.getText();
+//					System.out.println("Clue entered " + text);
+//					}
+//				
+//				
+//			});
+
+			
 			_playerPanel.add(clueInput);
 		
 			JLabel countLabel  = new JLabel("Count:");
@@ -188,12 +202,46 @@ public class GUI implements Observer{
 			JButton enterButton = new JButton("Enter");
 			enterButton.setBackground(Color.LIGHT_GRAY);
 			enterButton.setPreferredSize(new Dimension(50,30));
+			enterButton.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					currentClue = clueInput.getText();
+					countForTurn = Integer.parseInt(countInput.getText());
+					
+					if(_game.getBoard().legalClue(currentClue)){
+						if(_game.getBoard().legalCount(countForTurn)){
+							_game.changeControl();
+							System.out.println("works");
+						}else{
+							System.out.println("Count illegal");
+							/*
+							 * 
+							 * pop up message stating the count is illegal
+							 * 
+							 */
+						}
+						
+					}else{
+						System.out.println("Illegal Clue ");
+						
+						/*
+						 * 
+						 * Hollis and Sidney (Put in pop up message stating illegal clue)
+						 * 
+						 */
+					}
+				}
+				
+			});
 			_playerPanel.add(enterButton);
 		}else{
 			_playerPanel.removeAll();
 //			String
 //			JLabel
 		}
+		
 		
 	}
 

@@ -31,7 +31,7 @@ public class Game {
 		setBoard(new Board());
 		turn = RED;
 		winner = "";
-		control = "Players";
+		control = "Spymaster";
 	}
 	
 	/*
