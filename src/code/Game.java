@@ -86,4 +86,11 @@ public class Game {
 	public String getControl(){
 		return control;
 	}
+
+	public void setTurn(int i) {
+		if(i == BLUE)
+			Game.turn = BLUE;
+		else
+			Game.turn = RED;
+	}
 }

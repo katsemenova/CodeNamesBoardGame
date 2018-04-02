@@ -159,7 +159,7 @@ public class Board {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
 				Location loc = locations[i][j];
-				if (!loc.isVisible() && clue.equals(loc.getPerson().getAgentName()))
+				if (!loc.isVisible() && clue.equals(loc.getPerson().getAgentName().toLowerCase()))
 					return false;
 			}
 		}

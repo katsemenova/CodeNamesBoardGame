@@ -35,11 +35,12 @@ public class GUI implements Observer{
 	
 	
 	public GUI(Game g, JPanel mp, Driver driver) {
-		try {
+		 try {
 		    UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
 		 } catch (Exception e) {
 		           e.printStackTrace();
 		 }
+		
 		_windowHolder = driver;
 		_game = g;
 		
@@ -87,6 +88,7 @@ public class GUI implements Observer{
 					 b = new JButton("<html> "+location.getPerson().getAgentTypeString().toUpperCase()+"<br/><br/>" + codeName+"</html>");
 				else
 					 b = new JButton(codeName);
+				
 				
 				
 				
@@ -189,9 +191,9 @@ public class GUI implements Observer{
 		_feedBackPanel.removeAll();
 		Color col;
 		if(_game.getTurnString().equals("Blue"))
-			col = Color.blue;
+			col = new Color(78, 197, 193);
 		else
-			col = Color.red;
+			col = new Color(236, 87, 107);
 		JLabel labelOfTeamPlaying  = new JLabel(_game.getTurnString()+" Team's Turn");
 		labelOfTeamPlaying.setForeground(col);
 		labelOfTeamPlaying.setFont(new Font("Serif", Font.BOLD, 20));
@@ -221,7 +223,7 @@ public class GUI implements Observer{
 			JLabel clueLabel  = new JLabel("Clue:");
 			clueLabel.setFont(new Font("Serif", Font.BOLD, 13));
 			_playerPanel.add(clueLabel);
-		
+			
 			JTextField clueInput = new JTextField("input clue");
 			clueInput.setSize( new Dimension(250,clueInput.getHeight()));
 			_playerPanel.add(clueInput);
@@ -229,7 +231,12 @@ public class GUI implements Observer{
 			JLabel countLabel  = new JLabel("Count:");
 			countLabel.setFont(new Font("Serif", Font.BOLD, 13));
 			_playerPanel.add(countLabel);
-		
+			/*
+			 * @hollis @sidney
+			 * make the countInput a JComboBox for input of numbers only - google how
+			 * 
+			 * 
+			 */
 			JTextField countInput = new JTextField("input count");
 			countInput.setSize( new Dimension(25,countInput.getHeight()));
 			_playerPanel.add(countInput);
@@ -245,7 +252,7 @@ public class GUI implements Observer{
 					
 					if(count.matches("[0-9]") && _game.getBoard().legalCount(Integer.parseInt(count))){
 						countForTurn = Integer.parseInt(count);
-						if(_game.getBoard().legalClue(currentClue)){
+						if(_game.getBoard().legalClue(currentClue.toLowerCase())){
 							_game.changeControl();
 							update();
 						
