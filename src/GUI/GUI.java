@@ -227,7 +227,7 @@ public class GUI implements Observer{
 			countLabel.setFont(new Font("Serif", Font.BOLD, 13));
 			_playerPanel.add(countLabel);
 
-			Integer[] countBox = new Integer[25];
+			Integer[] countBox = new Integer[_game.getBoard().getCount()];
 			Integer input = 1;
 			for (int i = 0; i< _game.getBoard().getCount();i++) {
 				countBox[i] = input;
