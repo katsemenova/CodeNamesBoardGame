@@ -139,15 +139,15 @@ public class GUI implements Observer{
 
 	private boolean checkWinningState() {
 		if(_game.getBoard().checkWinningState()){
-	
-			System.out.println("Winner is");
 			if(_game.getBoard().checkForAssassin()){
-				System.out.println("due to assassin");
+				
 				JOptionPane.showMessageDialog(null, _game.getTurnString() + " Team Wins!", "Assassin Revealed", JOptionPane.INFORMATION_MESSAGE);
+				
 				}else{
 				_game.switchTeamTurn();
 				JOptionPane.showMessageDialog(null, _game.getTurnString() + " Team Wins!", "All Agents Revealed", JOptionPane.INFORMATION_MESSAGE);				
-			}
+				System.out.println("runs");
+				}
 			return true;
 		}
 		return false;
@@ -201,7 +201,7 @@ public class GUI implements Observer{
 		labelSpymasterOrNot.setForeground(col);
 		labelSpymasterOrNot.setBorder(new EmptyBorder(5, 20, 5, 20));
 		_feedBackPanel.add(labelSpymasterOrNot);
-		if(checkWinningState()){
+		if(_game.getBoard().checkWinningState()){
 			_feedBackPanel.removeAll();
 			
 
@@ -209,7 +209,7 @@ public class GUI implements Observer{
 	}
 	
 	private void updatePlayerActionPanel() {
-		if(checkWinningState()){
+		if(_game.getBoard().checkWinningState()){
 			_playerPanel.removeAll();
 		
 			
@@ -227,12 +227,7 @@ public class GUI implements Observer{
 			JLabel countLabel  = new JLabel("Count:");
 			countLabel.setFont(new Font("Serif", Font.BOLD, 13));
 			_playerPanel.add(countLabel);
-			/*
-			 * @hollis @sidney
-			 * make the countInput a JComboBox for input of numbers only - google how
-			 * 
-			 * 
-			 */
+
 			Integer[] countBox = new Integer[25];
 			Integer input = 1;
 			for (int i = 0; i< _game.getBoard().getCount();i++) {
@@ -263,20 +258,11 @@ public class GUI implements Observer{
 							System.out.println("Illegal Clue ");
 							JOptionPane.showMessageDialog(enterButton, "Illegal Clue", "Uh Oh", JOptionPane.ERROR_MESSAGE);
 						
-							/*
-							 * 
-							 * Hollis and Sidney (Put in pop up message stating illegal clue)
-							 * 
-						 	*/
 						}	
 					}else{
 						System.out.println("Count illegal");
 						JOptionPane.showMessageDialog(enterButton, "Illegal Count", "Uh Oh", JOptionPane.ERROR_MESSAGE);
-						/*
-						 * 
-						 * pop up message stating the count is illegal
-						 * 
-						 */
+
 					}
 
 				}
