@@ -1,19 +1,27 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Event;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JOptionPane;
 import code.Game;
 import code.Location;
 
@@ -69,6 +77,7 @@ public class GUI implements Observer{
 	@Override
 	public void update() {
 		createCards();
+		createJMenu();
 		updateFeedbackPanel();
 		updatePlayerActionPanel();
 		updateJFrameIfNotHeadless();
@@ -133,6 +142,7 @@ public class GUI implements Observer{
 			System.out.println("Winner is");
 			if(_game.getBoard().checkForAssassin()){
 				System.out.println("due to assassin");
+				JOptionPane.showMessageDialog(null, _game.getTurnString() + " Team Wins!", "Assassin Revealed", JOptionPane.INFORMATION_MESSAGE);
 				/*
 				 * 
 				 * @Sidney @Hollis
@@ -142,7 +152,8 @@ public class GUI implements Observer{
 				 * 
 				 */
 			}else{
-				
+				_game.switchTeamTurn();
+				JOptionPane.showMessageDialog(null, _game.getTurnString() + " Team Wins!", "All Agents Revealed", JOptionPane.INFORMATION_MESSAGE);
 				/*
 				 * 
 				 * @Sydney @Hollis
@@ -258,6 +269,7 @@ public class GUI implements Observer{
 						
 						}else{
 							System.out.println("Illegal Clue ");
+							JOptionPane.showMessageDialog(enterButton, "Illegal Clue", "Uh Oh", JOptionPane.ERROR_MESSAGE);
 						
 							/*
 							 * 
@@ -267,6 +279,7 @@ public class GUI implements Observer{
 						}	
 					}else{
 						System.out.println("Count illegal");
+						JOptionPane.showMessageDialog(enterButton, "Illegal Count", "Uh Oh", JOptionPane.ERROR_MESSAGE);
 						/*
 						 * 
 						 * pop up message stating the count is illegal
@@ -318,4 +331,45 @@ public class GUI implements Observer{
 		}
 	
 
-	}}
+		}
+	
+	public void createJMenu() {
+		JMenuBar fileBar = new JMenuBar();
+		JMenu fileMenu = new JMenu("File");
+		fileBar.add(fileMenu);
+		JMenuItem newGame = new JMenuItem("Start New Game");
+		newGame.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				_windowHolder.get_window().setVisible(false);
+				_windowHolder.get_window().dispose();
+				Game g = new Game();
+				SwingUtilities.invokeLater(new Driver(g));
+			}
+		});
+		fileMenu.add(newGame);
+		
+		JMenuItem quitGame = new JMenuItem("Quit Game");
+		quitGame.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		fileMenu.add(quitGame);
+		
+		JMenuItem easter = new JMenuItem("Rules");
+		easter.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+			        Desktop.getDesktop().browse(new URL("https://www.youtube.com/watch?v=dQw4w9WgXcQ").toURI());
+			    } catch (Exception e1) {
+			        e1.printStackTrace();
+			    }
+			}
+		});
+		fileMenu.add(easter);
+		_windowHolder.get_window().setJMenuBar(fileBar);
+	}
+	}
