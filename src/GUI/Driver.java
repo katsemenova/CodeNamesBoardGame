@@ -1,6 +1,7 @@
 package GUI;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -38,8 +39,6 @@ public class Driver implements Runnable {
 		get_window().setVisible(true);
 		get_window().pack();
 		get_window().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
 	}
 	
 	public void updateJFrame(){
