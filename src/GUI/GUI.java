@@ -9,7 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -141,8 +143,9 @@ public class GUI implements Observer{
 				 * you can get the winner by calling a method in game class
 				 * 
 				 */
-			}else{
 				
+
+			}else{
 				/*
 				 * 
 				 * @Sydney @Hollis
@@ -208,6 +211,7 @@ public class GUI implements Observer{
 		_feedBackPanel.add(labelSpymasterOrNot);
 		if(checkWinningState()){
 			_feedBackPanel.removeAll();
+			
 
 		}
 	}
@@ -237,17 +241,24 @@ public class GUI implements Observer{
 			 * 
 			 * 
 			 */
-			JTextField countInput = new JTextField("input count");
-			countInput.setSize( new Dimension(25,countInput.getHeight()));
-			_playerPanel.add(countInput);
-			
+			Integer[] countBox = new Integer[25];
+			Integer input = 1;
+			for (int i = 0; i< _game.getBoard().getCount();i++) {
+				countBox[i] = input;
+				input++;
+			}
+
+			JComboBox<Integer> spyCount = new JComboBox<Integer>(countBox);
+			spyCount.setSelectedIndex(0);
+			_playerPanel.add(spyCount);
+
 			JButton enterButton = new JButton("Enter");
 			enterButton.setBackground(Color.LIGHT_GRAY);
 			enterButton.setPreferredSize(new Dimension(50,30));
 			enterButton.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					String count = countInput.getText();
+					String count = Integer.toString((int) spyCount.getSelectedItem());
 					currentClue = clueInput.getText();
 					
 					if(count.matches("[0-9]") && _game.getBoard().legalCount(Integer.parseInt(count))){
