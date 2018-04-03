@@ -291,7 +291,9 @@ public class GUI implements Observer{
 			
 		}
 		
-		
+		if (_game.getControl().equals("Spymaster")) {
+		JOptionPane.showMessageDialog(null, _game.getTurnString() + " Team's Turn", "Turn", JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 
 	private void updateJFrameIfNotHeadless() {

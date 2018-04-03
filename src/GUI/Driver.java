@@ -39,8 +39,6 @@ public class Driver implements Runnable {
 		get_window().setVisible(true);
 		get_window().pack();
 		get_window().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JOptionPane.showMessageDialog(null, "Red Team's Turn", "Starting Turn", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	public void updateJFrame(){
