@@ -167,7 +167,7 @@ public class GUI implements Observer{
 	}
 	private void setColorUpdate(JButton b, String agentType) {
 		setColor(b,agentType);
-		update();
+		updateJFrameIfNotHeadless();
 	}
 	
 	private void setColor(JButton b, String agentType) {
