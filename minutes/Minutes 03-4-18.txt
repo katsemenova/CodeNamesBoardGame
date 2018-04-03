@@ -1,0 +1,32 @@
+Meeting Minutes for 3-4-18:
+
+Meeting Attendance: (list all students who were present) [1 minute]
+	Kateryna Semenova 
+	Aaron Kong
+	Hollis Pauquette
+	Sidney Bloch (M)
+	
+	
+Tasks completed since last meeting [1-2 minutes]
+
+	* Tidied up GUi
+	* added Error popups, illegal turn popups, and winning game popups
+	* Added a JComboBox for input count
+	* 
+
+Tasks worked upon but not completed since last meeting [2-4 minutes]
+
+	* Em, nothing
+	
+Goals for the next meeting [20+ minutes]
+
+	* Documentation
+	
+	
+Schedule for the next week's set of pair programming meetings [3-4 minutes]
+	* Sid - Aaron
+	* Hollis - Sid
+	* Kat - Hollis
+	* Sid - Kat
+	* Kat - Aaron
+
