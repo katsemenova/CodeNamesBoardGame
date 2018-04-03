@@ -167,7 +167,7 @@ public class GUI implements Observer{
 	}
 	private void setColorUpdate(JButton b, String agentType) {
 		setColor(b,agentType);
-		updateJFrameIfNotHeadless();
+		updateJFrameForColor();
 	}
 	
 	private void setColor(JButton b, String agentType) {
@@ -203,7 +203,6 @@ public class GUI implements Observer{
 		_feedBackPanel.add(labelSpymasterOrNot);
 		if(_game.getBoard().checkWinningState()){
 			_feedBackPanel.removeAll();
-
 		}
 	}
 	
@@ -291,19 +290,24 @@ public class GUI implements Observer{
 			
 		}
 		
-		if (_game.getControl().equals("Spymaster")) {
-		JOptionPane.showMessageDialog(null, _game.getTurnString() + " Team's Turn", "Turn", JOptionPane.INFORMATION_MESSAGE);
-		}
+		
 	}
 
 	private void updateJFrameIfNotHeadless() {
 		if(_windowHolder != null){
 			_windowHolder.updateJFrame();
 		}
-	
+		if (_game.getControl().equals("Spymaster")) {
+			JOptionPane.showMessageDialog(null, _game.getTurnString() + " Team's Turn", "Turn", JOptionPane.INFORMATION_MESSAGE);
+		}
 
 		}
-	
+	private void updateJFrameForColor() {
+		if(_windowHolder != null){
+			_windowHolder.updateJFrame();
+		}
+
+		}
 	public void createJMenu() {
 		JMenuBar fileBar = new JMenuBar();
 		JMenu fileMenu = new JMenu("File");
