@@ -144,9 +144,9 @@ public class GUI implements Observer{
 				JOptionPane.showMessageDialog(null, _game.getTurnString() + " Team Wins!", "Assassin Revealed", JOptionPane.INFORMATION_MESSAGE);
 				
 				}else{
-				_game.switchTeamTurn();
+					if(!_game.getWinner().equals(_game.getTurnString()))
+						_game.switchTeamTurn();
 				JOptionPane.showMessageDialog(null, _game.getTurnString() + " Team Wins!", "All Agents Revealed", JOptionPane.INFORMATION_MESSAGE);				
-				System.out.println("runs");
 				}
 			return true;
 		}
@@ -203,7 +203,6 @@ public class GUI implements Observer{
 		_feedBackPanel.add(labelSpymasterOrNot);
 		if(_game.getBoard().checkWinningState()){
 			_feedBackPanel.removeAll();
-			
 
 		}
 	}
@@ -253,18 +252,10 @@ public class GUI implements Observer{
 						if(_game.getBoard().legalClue(currentClue.toLowerCase())){
 							_game.changeControl();
 							update();
-						
-						}else{
-							System.out.println("Illegal Clue ");
+						}else
 							JOptionPane.showMessageDialog(enterButton, "Illegal Clue", "Uh Oh", JOptionPane.ERROR_MESSAGE);
-						
-						}	
-					}else{
-						System.out.println("Count illegal");
+					}else
 						JOptionPane.showMessageDialog(enterButton, "Illegal Count", "Uh Oh", JOptionPane.ERROR_MESSAGE);
-
-					}
-
 				}
 				
 			});
