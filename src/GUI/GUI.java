@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import java.net.URL;
 
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -245,16 +247,24 @@ public class GUI implements Observer{
 				public void actionPerformed(ActionEvent e) {
 					String count = Integer.toString((int) spyCount.getSelectedItem());
 					currentClue = clueInput.getText();
+					String easter = "hertz";
+					
+					if (currentClue.toLowerCase().equals(easter)) {
+						Icon image = new ImageIcon("./images/hertzlocker.png");
+						JOptionPane.showMessageDialog(null, "If you stare into the eyes of God, you'll see nothing but a reflection of yourself.", easter.toUpperCase() + "LOCKER", JOptionPane.NO_OPTION, image);
+					}
 					
 					if(count.matches("[0-9]") && _game.getBoard().legalCount(Integer.parseInt(count))){
 						countForTurn = Integer.parseInt(count);
+						
 						if(_game.getBoard().legalClue(currentClue.toLowerCase())){
 							_game.changeControl();
 							update();
-						}else
-							JOptionPane.showMessageDialog(enterButton, "Illegal Clue", "Uh Oh", JOptionPane.ERROR_MESSAGE);
+						}
+						else
+							JOptionPane.showMessageDialog(null, "Illegal Clue", "Uh Oh", JOptionPane.ERROR_MESSAGE);
 					}else
-						JOptionPane.showMessageDialog(enterButton, "Illegal Count", "Uh Oh", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Illegal Count", "Uh Oh", JOptionPane.ERROR_MESSAGE);
 				}
 				
 			});
