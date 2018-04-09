@@ -32,6 +32,7 @@ import code.Location;
  * @author Kateryna Semenova
  * @author Sidney Bloch
  * @author Aaron Kong
+ * @author Hollis Pauquette
  */
 public class GUI implements Observer{
 
@@ -251,7 +252,7 @@ public class GUI implements Observer{
 					
 					if (currentClue.toLowerCase().equals(easter)) {
 						Icon image = new ImageIcon("./images/hertzlocker.png");
-						JOptionPane.showMessageDialog(null, "\"You fail 100% of the JUnit tests you dont write.\"" + System.lineSeparator() + "— Matthew Hertz", easter.toUpperCase() + "LOCKER", JOptionPane.NO_OPTION, image);
+						JOptionPane.showMessageDialog(null, "\"You fail 100% of the JUnit tests you dont write.\"" + System.lineSeparator() + "— Matthew Hertz, probably", easter.toUpperCase() + "LOCKER", JOptionPane.NO_OPTION, image);
 					}
 					
 					if(count.matches("[0-9]") && _game.getBoard().legalCount(Integer.parseInt(count))){
