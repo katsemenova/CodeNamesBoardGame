@@ -77,6 +77,7 @@ public class GUI implements Observer {
 	 */
 	private int countForTurn;
 
+	private JLabel countLabel;
 	/*
 	 * GUI constructor initializes all JPanels to the _windowHolder instance and
 	 * adds them to the subsequent JFrame, calls the update() method to display everything
@@ -223,10 +224,13 @@ public class GUI implements Observer {
 	 */
 	private void decrementCount(boolean result) {
 		countForTurn--;
+		 countLabel.setText("Count: " + countForTurn);
+		 updateJFrameForColor();
+		 //for the scenario that the count isnt legal and the playing team selected their own card
 		if (!_game.getBoard().legalCount(countForTurn) && result == true) {
 			Game.changeControl();
 			Game.switchTeamTurn();
-			update();
+
 		}
 			update();
 	}
@@ -326,7 +330,7 @@ public class GUI implements Observer {
 		_playerPanel.add(clueLabel);
 
 		String textTwo = "Current Count: " + countForTurn;
-		JLabel countLabel = new JLabel(textTwo);
+		 countLabel = new JLabel(textTwo);
 		countLabel.setFont(new Font("Serif", Font.BOLD, 20));
 		countLabel.setBorder(new EmptyBorder(5, 20, 5, 20));
 		_playerPanel.add(countLabel);
