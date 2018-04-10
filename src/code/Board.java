@@ -156,7 +156,7 @@ public class Board {
 			throw new NullPointerException();
 		if (clue == "" || clue.contains(" "))
 			return false;
-		for(int i=0;i<9;i++){
+		for(int i=0;i<10;i++){
 			if(clue.contains(i+"")){
 				return false;
 			}
