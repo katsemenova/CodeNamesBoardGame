@@ -79,7 +79,7 @@ public class GUI implements Observer {
 
 	/*
 	 * GUI constructor initializes all JPanels to the _windowHolder instance and
-	 * adds them to the subsequent JFrame, calls the update() method to dispay everything
+	 * adds them to the subsequent JFrame, calls the update() method to display everything
 	 * in the Jframe 
 	 */
 	public GUI(Game g, JPanel mp, Driver driver) {
@@ -401,7 +401,7 @@ public class GUI implements Observer {
 					Icon image = new ImageIcon("./images/hertzlocker.png");
 					JOptionPane.showMessageDialog(null,
 							"\"You fail 100% of the JUnit tests you dont write.\"" + System.lineSeparator()
-									+ "� Matthew Hertz",
+									+ "- Matthew Hertz",
 							easter.toUpperCase() + "LOCKER", JOptionPane.NO_OPTION, image);
 				}
 
