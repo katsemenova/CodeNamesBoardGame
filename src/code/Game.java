@@ -44,6 +44,9 @@ public class Game {
 			control = "Spymaster";
 
 	}
+	/*
+	 * changes turn from whatever it is currently
+	 */
 	public static void switchTeamTurn(){
 		if(turn == BLUE)
 			Game.turn = RED;
@@ -51,11 +54,17 @@ public class Game {
 			Game.turn = BLUE;
 		
 	}
+	/*
+	 * Converts the turn int to a string value
+	 * 
+	 * @return a string stating which team's turn it is
+	 */
 	public String getTurnString(){
 		if(turn == BLUE)
 			return "Blue";
 		else return "Red";
 	}
+	
 	public static void setWinner(String win){
 		winner = win;
 	}

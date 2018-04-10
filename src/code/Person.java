@@ -43,7 +43,10 @@ public class Person {
 	public Integer getAgentType() {
 		return agentType;
 	}
-	
+	/*
+	 * depicts the agent type in string value instead of int
+	 * @return a String value of the agent
+	 */
 	public String getAgentTypeString(){
 		if(agentType == 0)
 			return "Blue";

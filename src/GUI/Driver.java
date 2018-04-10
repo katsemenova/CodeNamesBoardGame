@@ -21,7 +21,7 @@ public class Driver implements Runnable {
 	private Game _game;
 	
 	/*
-	 * Window to render. This window holds the game and all required JPanels.
+	 * JFrame variable - Window to render. This window holds the game and all required JPanels.
 	 */
 	private JFrame _window;
 	
@@ -46,7 +46,7 @@ public class Driver implements Runnable {
 	}
 	
 	/*
-	 * run() creates instances of the JFrame, JPanel, instantiates a new instance of the GUI class.
+	 * Creates instances of the JFrame, JPanel, instantiates a new instance of the GUI class.
 	 */
 	@Override
 	public void run() {
@@ -70,14 +70,14 @@ public class Driver implements Runnable {
 	}
 
 	/*
-	 * 
+	 * @return JFrame of the current game
 	 */
 	public JFrame get_window() {
 		return _window;
 	}
 
 	/*
-	 * 
+	 * @param JFrame to set the current window to
 	 */
 	public void set_window(JFrame _window) {
 		this._window = _window;
