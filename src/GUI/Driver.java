@@ -14,20 +14,40 @@ import code.Game;
  */
 
 public class Driver implements Runnable {
-
+	
+	/*
+	 * Instance of Game
+	 */
 	private Game _game;
+	
+	/*
+	 * Window to render. This window holds the game and all required JPanels.
+	 */
 	private JFrame _window;
+	
+	/*
+	 * This main JPanel houses the 4 JPanels which make up our UI.
+	 */
 	private JPanel _mainPanel;
 	
-	
+	/*
+	 * The Constructor assigns private variables, such as the _game instance that is passed through.
+	 */
 	public Driver(Game g){
 		_game = g;
 	}
 	
+	/*
+	 * Main method instantiates a new instance of the game. 
+	 */
 	public static void main(String[] args){
 		Game g = new Game();
 		SwingUtilities.invokeLater(new Driver(g));
 	}
+	
+	/*
+	 * run() creates instances of the JFrame, JPanel, instantiates a new instance of the GUI class.
+	 */
 	@Override
 	public void run() {
 		set_window(new JFrame("CodeNames"));
@@ -41,15 +61,24 @@ public class Driver implements Runnable {
 		get_window().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
+	/*
+	 * Updates the JFrame, repacks and repaints.
+	 */
 	public void updateJFrame(){
 		get_window().pack();
 		get_window().repaint();
 	}
 
+	/*
+	 * 
+	 */
 	public JFrame get_window() {
 		return _window;
 	}
 
+	/*
+	 * 
+	 */
 	public void set_window(JFrame _window) {
 		this._window = _window;
 	}

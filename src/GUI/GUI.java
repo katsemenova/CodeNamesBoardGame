@@ -36,16 +36,50 @@ import code.Location;
  */
 public class GUI implements Observer{
 
+	
+	/*
+	 * Panel that holds the game board for viewing pleasure
+	 */
 	private JPanel _outputPanel;
+	
+	/*
+	 * Panel which holds panels that allow user input
+	 */
 	private JPanel _inputPanel;
+	
+	/*
+	 * Panel which allows the game instance to communicate with the player.
+	 */
 	private JPanel _feedBackPanel;
+	
+	/*
+	 * 	Panel in which players may enter inputs or view the move count.
+	 */
 	private JPanel _playerPanel;
+		
+	/*
+	 * Private variable holding the game instance.
+	 */
 	private Game _game;
+	
+	/*
+	 * Holds the instance of the window that is passed through with the instantiation of the game.
+	 */
 	private Driver _windowHolder;
+	
+	/*
+	 * Variable holding the current clue.
+	 */
 	private String currentClue;
+	
+	/*
+	 * Variable holding the current guess count.
+	 */
 	private int countForTurn;
 	
-	
+	/*
+	 * GUI constructor initializes all JPanels to the _windowHolder instance and to the subsequent JFrame.
+	 */
 	public GUI(Game g, JPanel mp, Driver driver) {
 		 try {
 		    UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
@@ -77,7 +111,10 @@ public class GUI implements Observer{
 
 		update();
 	}
-
+	
+	/*
+	 * update() reinitializes and updates all JFrames. 
+	 */
 	@Override
 	public void update() {
 		createCards();
@@ -87,6 +124,9 @@ public class GUI implements Observer{
 		updateJFrameIfNotHeadless();
 	}	
 
+	/*
+	 * createCards() removes the 25 JButtons from the _outputPanel, and re-renders the cards in the panel.
+	 */
 	private void createCards(){
 		_outputPanel.removeAll();
 		
@@ -140,6 +180,11 @@ public class GUI implements Observer{
 		}
 	}
 
+	/*
+	 * checkWinningState() checks the state of the game every turn. If a team has won
+	 * the game then a pop up displays the winner and the game is over. 
+	 * If the game is not over then nothing happens.
+	 */
 	private boolean checkWinningState() {
 		if(_game.getBoard().checkWinningState()){
 			if(_game.getBoard().checkForAssassin()){
@@ -155,6 +200,11 @@ public class GUI implements Observer{
 		}
 		return false;
 	}
+
+	/*
+	 * This is triggered every time a JBUtton is pressed. countForTurn is decreased. 
+	 * If countForTurn reaches 0 then the turn is switched to the other team.
+	 */
 	private void decrementCount(boolean result) {
 		countForTurn--;
 		if(!_game.getBoard().legalCount(countForTurn) && result == true){
@@ -168,11 +218,19 @@ public class GUI implements Observer{
 		}
 
 	}
+	
+
+	/*
+	 * Updates color of the JButtons.
+	 */
 	private void setColorUpdate(JButton b, String agentType) {
 		setColor(b,agentType);
 		updateJFrameForColor();
 	}
-	
+
+	/*
+	 * Sets the color of JButtons according to the type of person at that location.
+	 */
 	private void setColor(JButton b, String agentType) {
 		if(agentType.equals("Red"))
 			b.setBackground(new Color(236, 87, 107));
@@ -185,6 +243,9 @@ public class GUI implements Observer{
 	
 	}
 
+	/*
+	 * Updates _feedbackPanel at the beginning of each turn.
+	 */
 	private void updateFeedbackPanel() {
 		_feedBackPanel.removeAll();
 		Color col;
@@ -208,7 +269,11 @@ public class GUI implements Observer{
 			_feedBackPanel.removeAll();
 		}
 	}
-	
+
+	/*
+	 * Displays updates to the _playerPanel. _playerPanel resets at the end of every turn. 
+	 * At the end of the game the _inputPanel is removed from the JFrame.
+	 */
 	private void updatePlayerActionPanel() {
 		if(_game.getBoard().checkWinningState()){
 			_playerPanel.removeAll();
@@ -244,6 +309,10 @@ public class GUI implements Observer{
 			enterButton.setBackground(Color.LIGHT_GRAY);
 			enterButton.setPreferredSize(new Dimension(50,30));
 			enterButton.addActionListener(new ActionListener(){
+
+				/*
+				 * ActionListener definition for each button.
+				 */
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					String count = Integer.toString((int) spyCount.getSelectedItem());
@@ -304,6 +373,9 @@ public class GUI implements Observer{
 		
 	}
 
+	/*
+	 * 
+	 */
 	private void updateJFrameIfNotHeadless() {
 		if(_windowHolder != null){
 			_windowHolder.updateJFrame();
@@ -313,12 +385,20 @@ public class GUI implements Observer{
 		}
 
 		}
+
+	/*
+	 * 
+	 */
 	private void updateJFrameForColor() {
 		if(_windowHolder != null){
 			_windowHolder.updateJFrame();
 		}
 
 		}
+
+	/*
+	 * JMenu creation method.
+	 */
 	public void createJMenu() {
 		JMenuBar fileBar = new JMenuBar();
 		JMenu fileMenu = new JMenu("File");
