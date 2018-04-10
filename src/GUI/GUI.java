@@ -429,7 +429,10 @@ public class GUI implements Observer {
 		if (_windowHolder != null) {
 			_windowHolder.updateJFrame();
 		}
-		if (_game.getControl().equals("Spymaster")&&!_game.getBoard().checkWinningState()) {
+		if(_game.getBoard().checkWinningState()){
+			
+		}
+		else if (_game.getControl().equals("Spymaster")) {
 			JOptionPane.showMessageDialog(null, _game.getTurnString() + " Team's Turn", "Turn",
 					JOptionPane.INFORMATION_MESSAGE);
 		}
