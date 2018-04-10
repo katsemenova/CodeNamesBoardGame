@@ -228,7 +228,6 @@ public class GUI implements Observer {
 			Game.switchTeamTurn();
 			update();
 		}
-		if (!_game.getBoard().legalCount(countForTurn) && result == false)
 			update();
 	}
 
