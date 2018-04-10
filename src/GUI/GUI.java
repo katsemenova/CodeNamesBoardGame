@@ -215,8 +215,8 @@ public class GUI implements Observer {
 
 	/*
 	 * This is triggered every time a JButton is pressed. countForTurn is
-	 * decreased regardless of wheather the guess was successful or not.
-	 * If the cound is not legal after it is decremented then the turn switches
+	 * decreased regardless of whether the guess was successful or not.
+	 * If the count is not legal after it is decremented then the turn switches
 	 * from the players of one team to the spymaster of the other team.
 	 * 
 	 * @param boolean is the result of a button being a successful or not successful guess
@@ -226,8 +226,9 @@ public class GUI implements Observer {
 		if (!_game.getBoard().legalCount(countForTurn) && result == true) {
 			Game.changeControl();
 			Game.switchTeamTurn();
-			
+			update();
 		}
+		if (!_game.getBoard().legalCount(countForTurn) && result == false)
 			update();
 	}
 
@@ -429,7 +430,7 @@ public class GUI implements Observer {
 		if (_windowHolder != null) {
 			_windowHolder.updateJFrame();
 		}
-		if (_game.getControl().equals("Spymaster")&&!_game.getBoard().checkWinningState()) {
+		if (_game.getControl().equals("Spymaster")) {
 			JOptionPane.showMessageDialog(null, _game.getTurnString() + " Team's Turn", "Turn",
 					JOptionPane.INFORMATION_MESSAGE);
 		}
@@ -471,7 +472,7 @@ public class GUI implements Observer {
 		fileMenu.add(newGame);
 
 		JMenuItem quitGame = new JMenuItem("Quit Game");
-		quitGame.addActionListener(new ActionListener() {
+		quitGame.addActionListener(new ActionListener() { 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
