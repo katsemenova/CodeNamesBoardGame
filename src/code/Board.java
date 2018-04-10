@@ -156,6 +156,11 @@ public class Board {
 			throw new NullPointerException();
 		if (clue == "")
 			return false;
+		for(int i=0;i<9;i++){
+			if(clue.contains(i+"")){
+				return false;
+			}
+		}
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
 				Location loc = locations[i][j];

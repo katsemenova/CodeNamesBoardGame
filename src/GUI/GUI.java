@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.net.URL;
 
 import javax.swing.BoxLayout;
@@ -369,7 +371,16 @@ public class GUI implements Observer {
 
 		JTextField clueInput = new JTextField("input clue");
 		clueInput.setSize(new Dimension(250, clueInput.getHeight()));
+		
+		clueInput.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+            	clueInput.setText("");
+            }
+        });
 		_playerPanel.add(clueInput);
+		
+		
 
 		JLabel countLabel = new JLabel("Count:");
 		countLabel.setFont(new Font("Serif", Font.BOLD, 13));
