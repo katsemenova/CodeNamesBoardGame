@@ -226,9 +226,8 @@ public class GUI implements Observer {
 		if (!_game.getBoard().legalCount(countForTurn) && result == true) {
 			Game.changeControl();
 			Game.switchTeamTurn();
-			update();
+			
 		}
-		if (!_game.getBoard().legalCount(countForTurn) && result == false)
 			update();
 	}
 
@@ -430,7 +429,7 @@ public class GUI implements Observer {
 		if (_windowHolder != null) {
 			_windowHolder.updateJFrame();
 		}
-		if (_game.getControl().equals("Spymaster")) {
+		if (_game.getControl().equals("Spymaster")&&!_game.getBoard().checkWinningState()) {
 			JOptionPane.showMessageDialog(null, _game.getTurnString() + " Team's Turn", "Turn",
 					JOptionPane.INFORMATION_MESSAGE);
 		}
