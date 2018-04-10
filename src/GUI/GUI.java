@@ -408,7 +408,7 @@ public class GUI implements Observer {
 							easter.toUpperCase() + "LOCKER", JOptionPane.NO_OPTION, image);
 				}
 
-				if (count.matches("[0-9]") && _game.getBoard().legalCount(Integer.parseInt(count))) {
+				if (_game.getBoard().legalCount(Integer.parseInt(count))) {
 					countForTurn = Integer.parseInt(count);
 
 					if (_game.getBoard().legalClue(currentClue.toLowerCase())) {
