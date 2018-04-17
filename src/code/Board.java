@@ -109,7 +109,7 @@ public class Board {
 	 * 0 = Blue agents 1 = Red agents 2 = Assassin 3 = Bystanders 4 = Green agents
 	 * 
 	 * @param none
-	 * @return shuffled ArrayList of Integer representing agent types
+	 * @return shuffled ArrayList of Integer representing agent types with 3 Teams
 	 */
 	public List<Integer> createAgentThreeTypeList() {
 		List<Integer> agentTypes = new ArrayList<Integer>();
@@ -243,7 +243,7 @@ public class Board {
 			} else if(Game.isRedAssassin()&&Game.isGreenAssassin()){
 				Game.setWinner("Blue");
 				return true;
-			}else if(Game.isGreenAssassin()&&Game.isRedAssassin()){
+			}else if(Game.isGreenAssassin()&&Game.isBlueAssassin()){
 				Game.setWinner("Red");
 				return true;
 			}
