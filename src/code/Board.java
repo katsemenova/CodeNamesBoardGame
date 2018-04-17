@@ -222,8 +222,32 @@ public class Board {
 	}
 
 	private boolean checkForAssassinThree() {
+		
 		// TODO Auto-generated method stub
+		int assassinRevealedCount = 0;
+		for (int i = 0; i < locations.length; i++) {
+			for (int j = 0; j < locations[0].length; j++) {
+				Location loc = locations[i][j];
+				if (loc.getPerson().getAgentType() == 2 && loc.isVisible())
+					assassinRevealedCount++;
+			}
+		}
+		if (assassinRevealedCount==2) {
+			if (Game.isBlueAssassin()&&Game.isRedAssassin()) {
+				Game.setWinner("Green");
+				return true;
+			} else if(Game.isRedAssassin()&&Game.isGreenAssassin()){
+				Game.setWinner("Blue");
+				return true;
+			}else if(Game.isGreenAssassin()&&Game.isRedAssassin()){
+				Game.setWinner("Red");
+				return true;
+			}
+
+		}
 		return false;
+
+
 	}
 
 	private boolean allAgentsRevealedThree() {

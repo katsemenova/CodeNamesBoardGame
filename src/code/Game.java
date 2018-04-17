@@ -26,6 +26,7 @@ public class Game {
 	private static String control;
 	
 	private static boolean twoTeam;
+	
 	private static boolean redAssassin, blueAssassin, greenAssassin;
 	/*
 	 * Constructor that runs the main method when board is created
@@ -41,6 +42,30 @@ public class Game {
 		control = "Spymaster";
 	}
 	
+	public static boolean isRedAssassin() {
+		return redAssassin;
+	}
+
+	public static void setRedAssassin(boolean redAssassin) {
+		Game.redAssassin = redAssassin;
+	}
+
+	public static boolean isBlueAssassin() {
+		return blueAssassin;
+	}
+
+	public static void setBlueAssassin(boolean blueAssassin) {
+		Game.blueAssassin = blueAssassin;
+	}
+
+	public static boolean isGreenAssassin() {
+		return greenAssassin;
+	}
+
+	public static void setGreenAssassin(boolean greenAssassin) {
+		Game.greenAssassin = greenAssassin;
+	}
+
 	/*
 	 * changes game from spymaster to players move of the team whos turn it is
 	 */
