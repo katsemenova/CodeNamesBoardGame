@@ -239,7 +239,7 @@ public class Board {
 			} else if(Game.isRedAssassin()&&Game.isGreenAssassin()){
 				Game.setWinner("Blue");
 				return true;
-			}else if(Game.isGreenAssassin()&&Game.isRedAssassin()){
+			}else if(Game.isGreenAssassin()&&Game.isBlueAssassin()){
 				Game.setWinner("Red");
 				return true;
 			}
