@@ -216,6 +216,45 @@ public class Board {
 			
 	}
 
+	private boolean checkForAssassinThree() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private boolean allAgentsRevealedThree() {
+		int countRed = 0;
+		int countBlue = 0;
+		int countGreen = 0;
+		// tracks how many agents revealed
+		for (int r = 0; r < 5; r++) {
+			for (int c = 0; c < 5; c++) {
+				Location loc = locations[r][c];
+				if (loc.isVisible() && loc.getPerson().getAgentType() == 0)
+					countBlue++;
+				else if (loc.isVisible() && loc.getPerson().getAgentType() == 1)
+					countRed++;
+				else if (loc.isVisible() && loc.getPerson().getAgentType() == 4)
+					countGreen++;
+			}
+		}
+
+		if (countRed == 6) {
+			Game.setWinner("Red");
+			return true;
+		}
+
+		if (countBlue == 5) {
+			Game.setWinner("Blue");
+			return true;
+		}
+		if (countGreen == 5) {
+			Game.setWinner("Green");
+			return true;
+		}
+
+		return false;
+	}
+
 	/**
 	 * 
 	 * Determined if a team Reveals the Assassin, then that team is immediately
@@ -304,7 +343,7 @@ public class Board {
 	 *         doesn't match any of the agents that are still unrevealed.
 	 */
 	public boolean selectCodeName(String codeName) {
-
+		boolean assassin = false;
 		int personRevealed = 5;
 		if (codeName == null)
 			throw new NullPointerException();
@@ -316,6 +355,8 @@ public class Board {
 					cardCount--;
 					loc.setVisible(true);
 					personRevealed = loc.getPerson().getAgentType();
+					if(personRevealed == 2)
+						Game.revealedAssassin(Game.getTurn());
 				}
 			}
 		}

@@ -26,6 +26,7 @@ public class Game {
 	private static String control;
 	
 	private static boolean twoTeam;
+	private static boolean redAssassin, blueAssassin, greenAssassin;
 	/*
 	 * Constructor that runs the main method when board is created
 	 */
@@ -33,6 +34,10 @@ public class Game {
 		setBoard(new Board());
 		turn = RED;
 		winner = "";
+		redAssassin = false;
+		blueAssassin = false;
+		greenAssassin = false;
+		twoTeam = true;
 		control = "Spymaster";
 	}
 	
@@ -51,10 +56,38 @@ public class Game {
 	 */
 	public static void switchTeamTurn(){
 		//turn = board.getNextTurn();
-		if(turn == BLUE)
-			Game.turn = RED;
-		else
-			Game.turn = BLUE;
+		if(twoTeam){
+			if(turn == BLUE)
+				Game.turn = RED;
+			else
+				Game.turn = BLUE;
+		}else{
+			if(turn == RED){
+				if(!blueAssassin)
+					Game.turn = BLUE;
+				else 
+					Game.turn = GREEN;
+			}else if(turn == BLUE){
+				if(!greenAssassin)
+					Game.turn =GREEN;
+				else
+					Game.turn = RED;
+			}else if(turn == GREEN)
+				if(!redAssassin)
+					Game.turn = RED;
+				else 
+					Game.turn = BLUE;
+				
+		}
+		
+	}
+	public static void revealedAssassin(int agent){
+		if(agent == RED)
+			redAssassin = true;
+		else if(agent == BLUE)
+			blueAssassin = true;
+		else if(agent == GREEN)
+			greenAssassin = true;
 		
 	}
 	/*
@@ -67,7 +100,8 @@ public class Game {
 			return "Blue";
 		else if(turn == GREEN)
 			return "Green";
-		else return "Red";
+		else 
+			return "Red";
 	}
 	
 	public static void setWinner(String win){
