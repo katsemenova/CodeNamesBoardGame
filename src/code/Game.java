@@ -19,11 +19,13 @@ public class Game {
 	/*
 	 * final constants, to define who's turn is when, done for better readability
 	 */
-	private final static int BLUE = 0; private final static int RED = 1; 
+	private final static int BLUE = 0; private final static int RED = 1; private final static int GREEN = 3;
 	/*
 	 * either "Players" if they are guessing the agents or "spymaster"
 	 */
 	private static String control;
+	
+	private static boolean twoTeam;
 	/*
 	 * Constructor that runs the main method when board is created
 	 */
@@ -48,6 +50,7 @@ public class Game {
 	 * changes turn from whatever it is currently
 	 */
 	public static void switchTeamTurn(){
+		//turn = board.getNextTurn();
 		if(turn == BLUE)
 			Game.turn = RED;
 		else
@@ -62,6 +65,8 @@ public class Game {
 	public String getTurnString(){
 		if(turn == BLUE)
 			return "Blue";
+		else if(turn == GREEN)
+			return "Green";
 		else return "Red";
 	}
 	
@@ -92,7 +97,17 @@ public class Game {
 	public void setTurn(int i) {
 		if(i == BLUE)
 			Game.turn = BLUE;
+		else if(i == GREEN)
+			Game.turn = GREEN;
 		else
 			Game.turn = RED;
+	}
+
+	public static boolean isTwoTeamGame() {
+		return twoTeam;
+	}
+
+	public void setTwoTeamGame(boolean twoTeam) {
+		this.twoTeam = twoTeam;
 	}
 }

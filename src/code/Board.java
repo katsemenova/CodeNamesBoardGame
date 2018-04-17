@@ -102,7 +102,23 @@ public class Board {
 		Collections.shuffle(agentTypes);
 		return agentTypes;
 	}
-
+	/**
+	 * This method creates an ArrayList of integers that represent agent types,
+	 * shuffles them, and returns the shuffled ArrayList.
+	 * 
+	 * 0 = Blue agents 1 = Red agents 2 = Assassin 3 = Bystanders
+	 * 
+	 * @param none
+	 * @return shuffled ArrayList of Integer representing agent types
+	 */
+	public List<Integer> createAgentThreeTypeList() {
+		List<Integer> agentTypes = new ArrayList<Integer>();
+		Integer[] otherList = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3, 3, 3,
+				3 };
+		agentTypes.addAll(Arrays.asList(otherList));
+		Collections.shuffle(agentTypes);
+		return agentTypes;
+	}
 	/**
 	 * This method creates a new ArrayList of type Person by instantiating 25 new
 	 * Person instances and passing their appropriate parameters from the
@@ -112,6 +128,7 @@ public class Board {
 	 * @return ArrayList of type Person that holds all Person assignments
 	 */
 	public List<Person> assignPerson() {
+		//create an if based on game type to call one or the other method
 		List<Integer> agentTypes = createAgentTypeList();
 		codenames = selectRandomCodeNames();
 		List<Person> assignments = new ArrayList<Person>();
@@ -186,7 +203,11 @@ public class Board {
 	 *         otherwise
 	 */
 	public boolean checkWinningState() {
-		return allAgentsRevealed() || checkForAssassin();
+		if(Game.isTwoTeamGame())
+			return allAgentsRevealed() || checkForAssassin();
+		else
+			return checkForAssassinThree() || allAgentsRevealedThree();
+			
 	}
 
 	/**
@@ -354,6 +375,7 @@ public class Board {
 		
 		return false;
 	}
-
+	
+	
 
 }
