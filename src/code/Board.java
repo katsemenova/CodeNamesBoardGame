@@ -220,7 +220,11 @@ public class Board {
 			return checkForAssassinThree() || allAgentsRevealedThree();
 			
 	}
-
+	private String assassinWin(){
+		if(checkForAssassinThree())
+			return Game.getWinner();
+		return "";
+	}
 	private boolean checkForAssassinThree() {
 		
 		// TODO Auto-generated method stub
