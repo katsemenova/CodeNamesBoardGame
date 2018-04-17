@@ -287,7 +287,7 @@ public class GUI implements Observer {
 
 		if (_game.getTurnString().equals("Blue"))
 			col = new Color(78, 197, 193);
-		else if (_game.getTurnString().equals("Blue"))
+		else if (_game.getTurnString().equals("Green"))
 			col = Color.GREEN;
 		else
 			col = new Color(236, 87, 107);

@@ -26,6 +26,7 @@ public class Game {
 	private static String control;
 	
 	private static boolean twoTeam;
+	
 	private static boolean redAssassin, blueAssassin, greenAssassin;
 	/*
 	 * Constructor that runs the main method when board is created
