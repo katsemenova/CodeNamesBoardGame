@@ -32,16 +32,29 @@ public class Game {
 	 * Constructor that runs the main method when board is created
 	 */
 	public Game(){
+		twoTeam = true;
 		setBoard(new Board());
 		turn = RED;
 		winner = "";
 		redAssassin = false;
 		blueAssassin = false;
 		greenAssassin = false;
-		twoTeam = true;
+		
 		control = "Spymaster";
+		System.out.println("1st constructor "+ twoTeam);
 	}
-	
+	public Game(boolean set){
+		twoTeam = set;
+		setBoard(new Board());
+		turn = RED;
+		winner = "";
+		redAssassin = false;
+		blueAssassin = false;
+		greenAssassin = false;
+		
+		control = "Spymaster";
+		System.out.println("2nd constructor "+ twoTeam);
+	}
 	public static boolean isRedAssassin() {
 		return redAssassin;
 	}

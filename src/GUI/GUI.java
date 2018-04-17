@@ -487,7 +487,7 @@ public class GUI implements Observer {
 			public void actionPerformed(ActionEvent e) {
 				_windowHolder.get_window().setVisible(false);
 				_windowHolder.get_window().dispose();
-				Game g = new Game();
+				Game g = new Game(true);
 				g.setTwoTeamGame(true);
 				SwingUtilities.invokeLater(new Driver(g));
 			}
@@ -500,8 +500,8 @@ public class GUI implements Observer {
 			public void actionPerformed(ActionEvent e) {
 				_windowHolder.get_window().setVisible(false);
 				_windowHolder.get_window().dispose();
-				Game g = new Game();
-				g.setTwoTeamGame(false);
+				Game g = new Game(false);
+				//g.setTwoTeamGame(false);
 				SwingUtilities.invokeLater(new Driver(g));
 			}
 		});
