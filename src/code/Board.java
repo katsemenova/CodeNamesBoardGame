@@ -106,15 +106,15 @@ public class Board {
 	 * This method creates an ArrayList of integers that represent agent types,
 	 * shuffles them, and returns the shuffled ArrayList.
 	 * 
-	 * 0 = Blue agents 1 = Red agents 2 = Assassin 3 = Bystanders
+	 * 0 = Blue agents 1 = Red agents 2 = Assassin 3 = Bystanders 4 = Green agents
 	 * 
 	 * @param none
 	 * @return shuffled ArrayList of Integer representing agent types
 	 */
 	public List<Integer> createAgentThreeTypeList() {
 		List<Integer> agentTypes = new ArrayList<Integer>();
-		Integer[] otherList = new Integer[] { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3, 3, 3,
-				3 };
+		Integer[] otherList = new Integer[] { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4,
+				4 };
 		agentTypes.addAll(Arrays.asList(otherList));
 		Collections.shuffle(agentTypes);
 		return agentTypes;
@@ -128,10 +128,16 @@ public class Board {
 	 * @return ArrayList of type Person that holds all Person assignments
 	 */
 	public List<Person> assignPerson() {
-		//create an if based on game type to call one or the other method
-		List<Integer> agentTypes = createAgentTypeList();
 		codenames = selectRandomCodeNames();
 		List<Person> assignments = new ArrayList<Person>();
+		List<Integer> agentTypes = createAgentTypeList();
+		List<Integer> threeAgentTypes = createAgentThreeTypeList();
+		//create an if based on game type to call one or the other method
+		if (!Game.isTwoTeamGame()) {
+			for (int i = 0; i < 25; i++) {
+				assignments.add(new Person(codenames.get(i), threeAgentTypes.get(i)));
+			}
+		}
 		for (int i = 0; i < 25; i++) {
 			assignments.add(new Person(codenames.get(i), agentTypes.get(i)));
 		}

@@ -477,17 +477,31 @@ public class GUI implements Observer {
 		JMenuBar fileBar = new JMenuBar();
 		JMenu fileMenu = new JMenu("File");
 		fileBar.add(fileMenu);
-		JMenuItem newGame = new JMenuItem("Start New Game");
-		newGame.addActionListener(new ActionListener() {
+		JMenuItem newTwoTeamGame = new JMenuItem("Start New 2-Team Game");
+		newTwoTeamGame.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				_windowHolder.get_window().setVisible(false);
 				_windowHolder.get_window().dispose();
 				Game g = new Game();
+				g.setTwoTeamGame(true);
 				SwingUtilities.invokeLater(new Driver(g));
 			}
 		});
-		fileMenu.add(newGame);
+		fileMenu.add(newTwoTeamGame);
+		
+		JMenuItem newThreeTeamGame = new JMenuItem("Start New 3-Team Game");
+		newThreeTeamGame.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				_windowHolder.get_window().setVisible(false);
+				_windowHolder.get_window().dispose();
+				Game g = new Game();
+				g.setTwoTeamGame(false);
+				SwingUtilities.invokeLater(new Driver(g));
+			}
+		});
+		fileMenu.add(newThreeTeamGame);
 
 		JMenuItem quitGame = new JMenuItem("Quit Game");
 		quitGame.addActionListener(new ActionListener() { 
