@@ -9,7 +9,7 @@ public class Person {
 	private String agentName;
 	/*
 	 * Integer that holds the int value that stands for a specific agent type
-	 *  "Red" = 1, "Blue" = 0, "Bystander" = 3, "Assassin" = 2
+	 *  "Red" = 1, "Blue" = 0, "Bystander" = 3, "Assassin" = 2 "Green" = 4
 	 */
 	private Integer agentType;
 	/**
@@ -54,8 +54,10 @@ public class Person {
 			return "Red";
 		else if(agentType == 2)
 			return "Assassin";
-		else 
+		else if(agentType ==3)
 			return "Bystander";
+		else 
+			return "Green";
 	}
 
 }

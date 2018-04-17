@@ -182,7 +182,7 @@ public class Board {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
 				Location loc = locations[i][j];
-				if (!loc.isVisible() && clue.equals(loc.getPerson().getAgentName().toLowerCase()))
+				if (!loc.isVisible() && clue.equals(loc.getPerson().getAgentName().toLowerCase())){
 					return false;
 			}
 		}
@@ -298,7 +298,7 @@ public class Board {
 	 *         doesn't match any of the agents that are still unrevealed.
 	 */
 	public boolean selectCodeName(String codeName) {
-
+		boolean assassin = false;
 		int personRevealed = 5;
 		if (codeName == null)
 			throw new NullPointerException();
@@ -310,6 +310,8 @@ public class Board {
 					cardCount--;
 					loc.setVisible(true);
 					personRevealed = loc.getPerson().getAgentType();
+					if(personRevealed == 2)
+						Game.revealedAssassin(Game.getTurn());
 				}
 			}
 		}

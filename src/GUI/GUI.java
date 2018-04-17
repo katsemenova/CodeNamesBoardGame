@@ -268,6 +268,8 @@ public class GUI implements Observer {
 			b.setBackground(new Color(229, 227, 56));
 		else if (agentType.equals("Assassin"))
 			b.setBackground(new Color(0, 0, 0));
+		else if(agentType.equals("Green"))
+			b.setBackground(Color.green);
 
 	}
 
@@ -285,6 +287,8 @@ public class GUI implements Observer {
 
 		if (_game.getTurnString().equals("Blue"))
 			col = new Color(78, 197, 193);
+		else if (_game.getTurnString().equals("Blue"))
+			col = Color.GREEN;
 		else
 			col = new Color(236, 87, 107);
 		JLabel labelOfTeamPlaying = new JLabel(_game.getTurnString() + " Team's Turn");
