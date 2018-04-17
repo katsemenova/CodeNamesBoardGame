@@ -182,7 +182,7 @@ public class Board {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
 				Location loc = locations[i][j];
-				if (!loc.isVisible() && clue.equals(loc.getPerson().getAgentName().toLowerCase())){
+				if (!loc.isVisible() && clue.equals(loc.getPerson().getAgentName().toLowerCase()))
 					return false;
 			}
 		}
@@ -208,6 +208,45 @@ public class Board {
 		else
 			return checkForAssassinThree() || allAgentsRevealedThree();
 			
+	}
+
+	private boolean checkForAssassinThree() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private boolean allAgentsRevealedThree() {
+		int countRed = 0;
+		int countBlue = 0;
+		int countGreen = 0;
+		// tracks how many agents revealed
+		for (int r = 0; r < 5; r++) {
+			for (int c = 0; c < 5; c++) {
+				Location loc = locations[r][c];
+				if (loc.isVisible() && loc.getPerson().getAgentType() == 0)
+					countBlue++;
+				else if (loc.isVisible() && loc.getPerson().getAgentType() == 1)
+					countRed++;
+				else if (loc.isVisible() && loc.getPerson().getAgentType() == 4)
+					countGreen++;
+			}
+		}
+
+		if (countRed == 6) {
+			Game.setWinner("Red");
+			return true;
+		}
+
+		if (countBlue == 5) {
+			Game.setWinner("Blue");
+			return true;
+		}
+		if (countGreen == 5) {
+			Game.setWinner("Green");
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
