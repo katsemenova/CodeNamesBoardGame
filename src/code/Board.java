@@ -124,6 +124,10 @@ public class Board {
 	 * Person instances and passing their appropriate parameters from the
 	 * selectRandomCodeNames and createAgentTypeList methods.
 	 * 
+	 * If the game is started in 3-Team mode, method will create new ArrayList<Person>
+	 * with 25 Person instances with the correct parameters to allow a 3-Team game
+	 * from selectRandmCodenames and createThreeAgentTypeList methods.
+	 * 
 	 * @param none
 	 * @return ArrayList of type Person that holds all Person assignments
 	 */
@@ -132,14 +136,15 @@ public class Board {
 		List<Person> assignments = new ArrayList<Person>();
 		List<Integer> agentTypes = createAgentTypeList();
 		List<Integer> threeAgentTypes = createAgentThreeTypeList();
-		//create an if based on game type to call one or the other method
-		if (!Game.isTwoTeamGame()) {
+		// create an if based on game type to call one or the other method
+		if (Game.isTwoTeamGame() == false) {
 			for (int i = 0; i < 25; i++) {
 				assignments.add(new Person(codenames.get(i), threeAgentTypes.get(i)));
 			}
-		}
-		for (int i = 0; i < 25; i++) {
-			assignments.add(new Person(codenames.get(i), agentTypes.get(i)));
+		} else {
+			for (int i = 0; i < 25; i++) {
+				assignments.add(new Person(codenames.get(i), agentTypes.get(i)));
+			}
 		}
 		return assignments;
 	}
