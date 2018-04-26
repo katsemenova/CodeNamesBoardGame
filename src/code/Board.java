@@ -220,7 +220,21 @@ public class Board {
 			return checkForAssassinThree() || allAgentsRevealedThree();
 			
 	}
-
+	private String assassinWin(){
+		if(checkForAssassinThree())
+			return Game.getWinner();
+		return "";
+	}
+	
+	
+	/**
+	 * This method determines which team is the winner when two assasins are revealed.
+	 * If blue assasin and red assasin is revealed, green team is the winner.
+	 * If red assasin and green assasin is revealed, blue team is the winner.
+	 * If green assasin and blue assasin is revealed, red team is the winner.
+	 * @param none
+	 * @return {@code true} if the winner is determined {@code false} otherwise
+	 */
 	private boolean checkForAssassinThree() {
 		
 		// TODO Auto-generated method stub

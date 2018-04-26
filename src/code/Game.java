@@ -39,9 +39,7 @@ public class Game {
 		redAssassin = false;
 		blueAssassin = false;
 		greenAssassin = false;
-		
 		control = "Spymaster";
-		System.out.println("1st constructor "+ twoTeam);
 	}
 	public Game(boolean set){
 		twoTeam = set;
@@ -51,10 +49,8 @@ public class Game {
 		redAssassin = false;
 		blueAssassin = false;
 		greenAssassin = false;
-		
 		control = "Spymaster";
-		System.out.println("2nd constructor "+ twoTeam);
-	}
+		}
 	public static boolean isRedAssassin() {
 		return redAssassin;
 	}
@@ -145,7 +141,7 @@ public class Game {
 	public static void setWinner(String win){
 		winner = win;
 	}
-	public String getWinner(){
+	public static String getWinner(){
 		return winner;
 	}
 	public static int getTurn(){
