@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
@@ -413,7 +415,20 @@ public class GUI implements Observer {
 			public void actionPerformed(ActionEvent e) {
 				String count = Integer.toString((int) spyCount.getSelectedItem());
 				currentClue = clueInput.getText();
+				List<Integer> ascension = new ArrayList<Integer>();
+				ascension.add(7);
+				ascension.add(15);
+				ascension.add(1);
+				ascension.add(2);
+				ascension.add(19);
+				ascension.add(7);
+				ascension.add(25);
+				ascension.add(6);
+				ascension.add(13);
+				ascension.add(14);
+				ascension.add(0);
 				String easter = "hertz";
+				String easter1 = "ascension";
 
 				if (currentClue.toLowerCase().equals(easter)) {
 					Icon image = new ImageIcon("./images/hertzlocker.png");
@@ -421,6 +436,14 @@ public class GUI implements Observer {
 							"\"You fail 100% of the JUnit tests you dont write.\"" + System.lineSeparator()
 									+ "- Matthew Hertz",
 							easter.toUpperCase() + "LOCKER", JOptionPane.NO_OPTION, image);
+				}
+				
+				if (currentClue.toLowerCase().equals(easter1) || ascension.contains(Integer.parseInt(count))) {
+					try {
+						Desktop.getDesktop().browse(new URL("https://store.steampowered.com/app/42700/Call_of_Duty_Black_Ops/").toURI());
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
 				}
 
 				if (_game.getBoard().legalCount(Integer.parseInt(count))) {

@@ -372,6 +372,7 @@ public class Board {
 	 *         doesn't match any of the agents that are still unrevealed.
 	 */
 	public boolean selectCodeName(String codeName) {
+		@SuppressWarnings("unused")
 		boolean assassin = false;
 		int personRevealed = 5;
 		if (codeName == null)

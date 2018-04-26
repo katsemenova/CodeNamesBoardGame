@@ -179,6 +179,7 @@ public class Game {
 		return twoTeam;
 	}
 
+	@SuppressWarnings("static-access")
 	public void setTwoTeamGame(boolean twoTeam) {
 		this.twoTeam = twoTeam;
 	}
