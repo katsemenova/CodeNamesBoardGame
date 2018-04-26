@@ -438,7 +438,7 @@ public class GUI implements Observer {
 							easter.toUpperCase() + "LOCKER", JOptionPane.NO_OPTION, image);
 				}
 				
-				if (currentClue.toLowerCase().equals(easter1) || ascension.contains(Integer.parseInt(count))) {
+				if (currentClue.toLowerCase().equals(easter1) && ascension.contains(Integer.parseInt(count))) {
 					try {
 						Desktop.getDesktop().browse(new URL("https://store.steampowered.com/app/42700/Call_of_Duty_Black_Ops/").toURI());
 					} catch (Exception e1) {
