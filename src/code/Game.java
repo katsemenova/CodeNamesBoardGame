@@ -24,12 +24,18 @@ public class Game {
 	 * either "Players" if they are guessing the agents or "spymaster"
 	 */
 	private static String control;
-	
+	/*
+	 * a boolean that when true means its a red/blue team game 
+	 * when false its a blue/green/red team game
+	 */
 	private static boolean twoTeam;
-	
+	/*
+	 * booleans that will be set to true when the correstponding team reveals an assassin
+	 */
 	private static boolean redAssassin, blueAssassin, greenAssassin;
 	/*
 	 * Constructor that runs the main method when board is created
+	 * it automatically creates a two team game
 	 */
 	public Game(){
 		twoTeam = true;
@@ -41,6 +47,10 @@ public class Game {
 		greenAssassin = false;
 		control = "Spymaster";
 	}
+	/*
+	 * Constructor that runs the main method when board is created
+	 * @param boolean determines wheather it is a two team or a three team game;
+	 */
 	public Game(boolean set){
 		twoTeam = set;
 		setBoard(new Board());
@@ -51,26 +61,39 @@ public class Game {
 		greenAssassin = false;
 		control = "Spymaster";
 		}
+	/*
+	 * @return boolean {@code true} when the red team reveals the assassin 
+	 */
 	public static boolean isRedAssassin() {
 		return redAssassin;
 	}
-
+	/*
+	 * @param boolean that sets if the red team has revealed the assassin or not 
+	 */
 	public static void setRedAssassin(boolean redAssassin) {
 		Game.redAssassin = redAssassin;
 	}
-
+	/*
+	 * @return boolean {@code true} when the blue team reveals the assassin 
+	 */
 	public static boolean isBlueAssassin() {
 		return blueAssassin;
 	}
-
+	/*
+	 * @param boolean that sets if the blue team has revealed the assassin or not 
+	 */
 	public static void setBlueAssassin(boolean blueAssassin) {
 		Game.blueAssassin = blueAssassin;
 	}
-
+	/*
+	 * @return boolean {@code true} when the green team reveals the assassin 
+	 */
 	public static boolean isGreenAssassin() {
 		return greenAssassin;
 	}
-
+	/*
+	 * @param boolean that sets if the green team has revealed the assassin or not 
+	 */
 	public static void setGreenAssassin(boolean greenAssassin) {
 		Game.greenAssassin = greenAssassin;
 	}
@@ -115,6 +138,10 @@ public class Game {
 		}
 		
 	}
+	/*
+	 * When an agents reveals an assassin this method gets called to set the corresponding boolean to true
+	 * @param int is the agent's number
+	 */
 	public static void revealedAssassin(int agent){
 		if(agent == RED)
 			redAssassin = true;
@@ -161,7 +188,10 @@ public class Game {
 	public String getControl(){
 		return control;
 	}
-
+	/*
+	 * sets's who's turn it is based on the 
+	 * @param int which is the number corresponding to the team who's turn it is
+	 */
 	public void setTurn(int i) {
 		if(i == BLUE)
 			Game.turn = BLUE;

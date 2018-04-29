@@ -201,10 +201,9 @@ public class Board {
 	}
 
 	/**
-	 * This method determines whether the game is in a winning state, A winning
-	 * state is when: - either all 9 of the red team's agents are revealed, or all 8
-	 * of the blue teams agents are revealed - or when an assassin is revealed and
-	 * the game ends.
+	 * This method determines whether the game is in a winning state, the 
+	 * winning state depends on if it is a two team game or a three team game
+	 * depending on what team game it is, corresponding methods are called.
 	 * 
 	 * The method is split up into two methods that return booleans for both testing
 	 * and readability purposes
@@ -220,6 +219,11 @@ public class Board {
 			return checkForAssassinThree() || allAgentsRevealedThree();
 			
 	}
+	/*
+	 * Used to return the winner of the game if it is a three team game 
+	 * 
+	 * @return a string that states the winner
+	 */
 	private String assassinWin(){
 		if(checkForAssassinThree())
 			return Game.getWinner();
@@ -263,7 +267,16 @@ public class Board {
 
 
 	}
-
+	/**
+	 * Used for the three team game
+	 * Determined if a team Reveals the Assassin, then that team is immediately
+	 * "killed". The game is over and the other team is declared the winner.
+	 * 
+	 * 
+	 * @param none
+	 * @return {@code true} if one of the locations is revealed and the agent is an
+	 *         assassin {@code false} otherwise
+	 */
 	private boolean allAgentsRevealedThree() {
 		int countRed = 0;
 		int countBlue = 0;
