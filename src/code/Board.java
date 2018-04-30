@@ -473,7 +473,7 @@ public class Board {
 	}
 
 	public boolean legalCount(int countForTurn) {
-		if(countForTurn<=cardCount && countForTurn>0){
+		if(countForTurn<=cardCount && countForTurn>=0){
 			return true;
 		}
 		
