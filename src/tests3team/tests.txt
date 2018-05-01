@@ -1,0 +1,17 @@
+
+AssassinTest - All tests run the same algorithm
+				  - sets up a game, copies the board, loops through to find an assassin.
+			      - When an assassin is found it switches turn and checks the winning state.
+			      - loops through to find the last assassin. when the last assassin is found then the game checks to see who the winner is.
+			      - this code is used 3 times to check for each team win.
+			      
+NextTurnTest - tests are relatively the same.
+				  - new game, registered the turn, iterates through the location list, reveals a team member, chooses a codename of opposing team, 
+				  - saves which team started their turn first, select codename from previous team, forces the game to change turn. finally, checks that the game forces the turn to switch
+				  - ThreeTeamRotationAssassin takes a person from each team and an assassin. reveals an assain and makes sure the team order is adjusted accordingly. 
+
+TeamTest - All tests run the same algorithm
+				  - Tests a randomized board to see if the appropriate amount of locations and team members appear. loops through the locations, and counts how many of each member are3 tests for the 3 teams.
+
+WinningStateTest - All tests use the same algorithm.
+				  - Checks each team to see if they will win when all of their team members are uncovered.

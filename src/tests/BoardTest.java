@@ -36,7 +36,7 @@ public class BoardTest {
 
 	@Test
 	public void readCodeNamesFromFileTest() {
-		b.setFile("./testfiles/codenames.txt");
+		b.setFile("./testfiles/GameWords2.txt");
 		ArrayList<String> code = new ArrayList<String>(b.readCodeNamesFromFile());
 		ArrayList<String> act = new ArrayList<String>();
 		Collections.addAll(act, "area", "book", "business", "case", "child", "company", "country", "day", "eye", "fact",
