@@ -3,9 +3,11 @@ package tests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import code.Board;
+import code.Game;
 import code.Location;
 
 public class AgentsTest {
@@ -20,10 +22,11 @@ public class AgentsTest {
 	// @author Aaron Kong
 	
 	private Board b = new Board();
+	private Game g = new Game();
 
 	@Test
 	public void testPersonsForNull() {
-		Location[][] theLocations = b.getLocations();
+		Location[][] theLocations = g.getBoard().getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
 				assertTrue("The agent codename is not set",theLocations[i][j].getPerson().getAgentName() != null);
@@ -40,7 +43,7 @@ public class AgentsTest {
 	@Test
 	public void testRedAgents() {
 		int rCount = 0;
-		Location[][] theLocations = b.getLocations();
+		Location[][] theLocations = g.getBoard().getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
 				if (theLocations[i][j].getPerson().getAgentType() == 1) {
@@ -55,7 +58,7 @@ public class AgentsTest {
 	@Test
 	public void testBlueAgents() {
 		int bCount = 0;
-		Location[][] theLocations = b.getLocations();
+		Location[][] theLocations = g.getBoard().getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
 				if (theLocations[i][j].getPerson().getAgentType() == 0) {
@@ -70,7 +73,7 @@ public class AgentsTest {
 	@Test
 	public void testAssassins() {
 		int aCount = 0;
-		Location[][] theLocations = b.getLocations();
+		Location[][] theLocations = g.getBoard().getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
 				if (theLocations[i][j].getPerson().getAgentType() == 2) {
@@ -85,7 +88,7 @@ public class AgentsTest {
 	@Test
 	public void testBystanders() {
 		int byCount = 0;
-		Location[][] theLocations = b.getLocations();
+		Location[][] theLocations = g.getBoard().getLocations();
 		for (int i = 0; i < theLocations.length; i++) {
 			for (int j = 0; j < theLocations[0].length; j++) {
 				if (theLocations[i][j].getPerson().getAgentType() == 3) {
