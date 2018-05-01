@@ -224,7 +224,7 @@ public class Board {
 	 * 
 	 * @return a string that states the winner
 	 */
-	private String assassinWin(){
+	public String assassinWin(){
 		if(checkForAssassinThree())
 			return Game.getWinner();
 		return "";
@@ -239,7 +239,7 @@ public class Board {
 	 * @param none
 	 * @return {@code true} if the winner is determined {@code false} otherwise
 	 */
-	private boolean checkForAssassinThree() {
+	public boolean checkForAssassinThree() {
 		
 		// TODO Auto-generated method stub
 		int assassinRevealedCount = 0;
