@@ -19,7 +19,7 @@ public class Game {
 	/*
 	 * final constants, to define who's turn is when, done for better readability
 	 */
-	private final static int BLUE = 0; private final static int RED = 1; private final static int GREEN = 4;
+	private final static int BLUE = 0; private final static int RED = 1; private final static int GREEN = 3;
 	/*
 	 * either "Players" if they are guessing the agents or "spymaster"
 	 */
@@ -114,11 +114,13 @@ public class Game {
 	public static void switchTeamTurn(){
 		//turn = board.getNextTurn();
 		if(twoTeam){
+			System.out.println("two team switch");
 			if(turn == BLUE)
 				Game.turn = RED;
 			else
 				Game.turn = BLUE;
 		}else{
+			System.out.println("three team switch");
 			if(turn == RED){
 				if(!blueAssassin)
 					Game.turn = BLUE;
@@ -197,7 +199,7 @@ public class Game {
 			Game.turn = BLUE;
 		else if(i == GREEN)
 			Game.turn = GREEN;
-		else
+		else if(i == RED)
 			Game.turn = RED;
 	}
 
