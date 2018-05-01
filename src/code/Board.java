@@ -137,11 +137,11 @@ public class Board {
 		List<Integer> agentTypes = createAgentTypeList();
 		List<Integer> threeAgentTypes = createAgentThreeTypeList();
 		// create an if based on game type to call one or the other method
-		if (Game.isTwoTeamGame() == false) {
+		if (!Game.isTwoTeamGame()) {
 			for (int i = 0; i < 25; i++) {
 				assignments.add(new Person(codenames.get(i), threeAgentTypes.get(i)));
 			}
-		} else {
+		} else if (Game.isTwoTeamGame()){
 			for (int i = 0; i < 25; i++) {
 				assignments.add(new Person(codenames.get(i), agentTypes.get(i)));
 			}
