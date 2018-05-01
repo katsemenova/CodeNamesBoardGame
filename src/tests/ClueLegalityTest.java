@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.Test;
 
 import code.Board;
+import code.Game;
 
 /*
  * @author Aaron & Hollis
@@ -13,12 +14,12 @@ import code.Board;
 public class ClueLegalityTest {
 	@Test
 	public void legaClueTestAgentName(){
-				
-		Board b = new Board();
+		Game g = new Game();
+		Board b = g.getBoard();
 		
 		List<String> agentNames = b.getCodenamesUsed();
-		assertEquals("Agent is not revealed yet, so using their name is not legal ",false, b.legalClue(agentNames.get(1)));
-		assertEquals("Agent is not revealed yet, so using their name is not legal ",false, b.legalClue(agentNames.get(0)));
+		assertEquals("Agent is not revealed yet, so using their name is not legal ",false, b.legalClue(agentNames.get(2)));
+		assertEquals("Agent is not revealed yet, so using their name is not legal ",false, b.legalClue(agentNames.get(3)));
 
 
 }
