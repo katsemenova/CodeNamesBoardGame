@@ -19,7 +19,7 @@ public class Game {
 	/*
 	 * final constants, to define who's turn is when, done for better readability
 	 */
-	private final static int BLUE = 0; private final static int RED = 1; private final static int GREEN = 3;
+	private final static int BLUE = 0; private final static int RED = 1; private final static int GREEN = 4;
 	/*
 	 * either "Players" if they are guessing the agents or "spymaster"
 	 */
